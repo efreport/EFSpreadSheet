@@ -20,7 +20,7 @@ rem ---------------------------------------------------------------------------
 
 setlocal
 
-set CATALINA_HOME=..\..\apache-tomcat-8.5.82
+set CATALINA_HOME=..\..\EFSpreadSheet
 
 rem Guess CATALINA_HOME if not defined
 set "CURRENT_DIR=%cd%"
