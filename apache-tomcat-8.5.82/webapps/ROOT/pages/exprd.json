@@ -1,0 +1,950 @@
+[{
+		"typeName": "常用函数",
+		"funs": [{
+			"funName": "MAXNUM",
+			"description": "MAXNUM(x...)返回指定的数中带有较大值的数字。",
+			"demo": "MAXNUM(3,4,1,2,5,7)返回7。"
+		}, {
+			"funName": "MINNUM",
+			"description": "MINNUM(x...)返回指定的数中带有较小值的数字。",
+			"demo": "MINNUM(3,4,1,2,5,7)返回1。"
+		}, {
+			"funName": "CEIL",
+			"description": "CEIL(x)对一个数进行上舍入。返回值是大于等于 x，并且与它最接近的整数。x必须是一个数值。",
+			"demo": "CEIL(0.60)返回1。"
+		}, {
+			"funName": "FLOOR",
+			"description": "FLOOR(x)对一个数进行下舍入。返回的是小于等于 x，且与 x 最接近的整数。x是任意数值或表达式。",
+			"demo": "FLOOR(0.60)返回0。"
+		}, {
+			"funName": "RANDOM",
+			"description": "RANDOM()返回介于 0 ~ 1 之间的一个随机数。",
+			"demo": "RANDOM()。"
+		}, {
+			"funName": "TOPRECISION",
+			"description": "TOPRECISION(value,num)在value的值超出指定位数num时将其转换为指数计数法。返回 value 的字符串表示，包含 num 个有效数字。如果 num 足够大，能够包括 value 整数部分的所有数字，那么返回的字符串将采用定点计数法。否则，采用指数计数法，即小数点前有一位数字，小数点后有 num-1 位数字。必要时，该数字会被舍入或用 0 补足。",
+			"demo": "TOPRECISION(10000,2)返回1.0e+4。"
+		}, {
+			"funName": "TOFIXED",
+			"description": "TOFIXED(value,num)把 value 四舍五入为指定小数位数num的数字。返回 value 的字符串表示，不采用指数计数法，小数点后有固定的 num 位数字。如果必要，该数字会被舍入，也可以用 0 补足，以便它达到指定的长度。如果 num 大于 le+21，返回采用指数计数法表示的字符串。",
+			"demo": "TOFIXED(13.37,1)返回13.4。"
+		}, {
+			"funName": "TOEXPONENTIAL",
+			"description": "TOEXPONENTIAL(value,num)把 value 的值转换成指数计数法。返回 value的字符串表示，采用指数计数法，即小数点之前有一位数字，小数点之后有 num 位数字。该数字的小数部分将被舍入，必要时用 0 补足，以便它达到指定的长度。",
+			"demo": "TOEXPONENTIAL(10000,2)返回1.00e+4。"
+		}, {
+			"funName": "SORTED",
+			"description": "SORTED(x...)返回参数的排序。",
+			"demo": "SORTED([5,4,2,3,1])返回1,2,3,4,5。"
+		}, {
+			"funName": "REVERSE",
+			"description": "REVERSE(x...)返回参数的颠倒顺序。",
+			"demo": "REVERSE(5,4,2,3,1)返回1,3,2,4,5。"
+		}, {
+			"funName": "LENGTH",
+			"description": "LENGTH(object)返回参数的长度。",
+			"demo": "LENGTH(\"HelloWorld\")返回10。LENGTH([1,2,3])返回3。LENGTH(new Array(0,1,2,3,4))返回5。"
+		}]
+	},
+	{
+		"typeName": "数学函数",
+		"funs": [{
+			"funName": "ATAN2",
+			"description": "ATAN2(y,x)返回从 x 轴到点 (x,y) 之间的角度。返回的值是-PI 到 PI 之间的值，是从 X 轴正向逆时针旋转到点 (x,y) 时经过的角度。请注意这个函数的参数顺序，Y 坐标在 X 坐标之前传递。",
+			"demo": "ATAN2(0.50,0.50) 返回0.7853981633974483。"
+		}, {
+			"funName": "EXP",
+			"description": "EXP(x)返回 e 的 x 次幂的值。e 代表自然对数的底数，其值近似为 2.71828。x是任意数值或表达式。被用作指数。",
+			"demo": "EXP(1)返回2.718281828459045。"
+		}, {
+			"funName": "POW",
+			"description": "POW(x,y)返回 x 的 y 次幂的值。x底数,必须是数字。y幂数,必须是数字。",
+			"demo": "POW(2,3)返回8。"
+		}]
+	}, {
+		"typeName": "通用函数",
+		"funs": [{
+				"funName": "NUMBER",
+				"description": "NUMBER(object)把对象的值转换为数字。",
+				"demo": "NUMBER(true)返回1。NUMBER(\"999\")返回999。"
+			}, {
+				"funName": "STRING",
+				"description": "STRING(object)把对象的值转换为字符串。",
+				"demo": "STRING(true)返回\"true\"。STRING(123)返回\"123\"。"
+			}, {
+				"funName": "PARSEFLOAT",
+				"description": "PARSEFLOAT(string)解析一个字符串，并返回一个浮点数。字符串中的首个字符是否是数字。如果是，则对字符串进行解析，直到到达数字的末端为止，然后以数字返回该数字，而不是作为字符串。",
+				"demo": "PARSEFLOAT(\" 60 \")返回60。"
+			}, {
+				"funName": "PARSEINT",
+				"description": "PARSEINT(string, radix)解析一个字符串，并返回一个整数。当参数 radix 的值为 0，或没有设置该参数时，PARSEINT() 会根据 string 来判断数字的基数。",
+				"demo": "PARSEINT(\"11\",2)返回3。PARSEINT(\"10\")返回10。"
+			}, {
+				"funName": "EVAL",
+				"description": "EVAL(string)计算某个字符串，并执行其中的的 JavaScript 代码。返回通过计算 string 得到的值（如果有的话）。",
+				"demo": "EVAL(\"2+2\")返回4。EVAL(\"var d= new date();d.getTime();\")返回当前时间值。"
+			}, 
+			{
+				"funName": "NEWGUID",
+				"description": "NEWGUID()随机生成GUID。",
+				"demo": "NEWGUID()返回随机的GUID，例如2a032d5d-fc65-c17f-4cbd-ad4aa5bade14。"
+			}
+		]
+	}, {
+		"typeName": "逻辑函数",
+		"funs": [{
+			"funName": "ALL",
+			"description": "ALL(...)参数中的元素都为真的时候为真",
+			"demo": "ALL(3>2,3>1)返回true。ALL(1>3,3>1)返回false。"
+		}, {
+			"funName": "ANY",
+			"description": "ANY(...)集合中的元素有一个为真的时候为真",
+			"demo": "ANY(3>2,3>1)返回真(1);ANY(1>3,3>1)返回真(1)。"
+		}]
+	}, {
+		"typeName": "字符串函数",
+		"funs": [{
+			"funName": "CONCAT",
+			"description": "CONCAT(\"string\"...)连接两个或多个字符串。",
+			"demo": "CONCAT(\"hello\",\"world\")返回helloworld。"
+		}, {
+			"funName": "INDEXOF",
+			"description": "INDEXOF(value,searchvalue,fromindex)返回某个指定的字符串值在字符串中首次出现的位置。",
+			"demo": "INDEXOF(\"hello world\",\"world\")返回6。"
+		}, {
+			"funName": "CHARAT",
+			"description": "CHARAT(value,index)返回指定位置的字符。字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 value长度之间，该方法将返回一个空字符串。",
+			"demo": "CHARAT(\"Hello world!\",1)返回e。"
+		}, {
+			"funName": "LASTINDEXOF",
+			"description": "LASTINDEXOF(value,searchvalue,fromindex)返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。",
+			"demo": "LASTINDEXOF(\"hello world\",\"world\",5)返回-1。"
+		}, {
+			"funName": "Match",
+			"description": "Match(value,searchvalue)在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。",
+			"demo": "Match(\"hello world\",\"world\")返回world。Match(\"1 plus 2 equal 3\",/\\d+/g)返回1,2,3。"
+		}, {
+			"funName": "SLICE",
+			"description": "SLICE(value,start,end)提取字符串的某个部分，并以新的字符串返回被提取的部分。",
+			"demo": "SLICE(\"Hello happy world!\",6)返回happy world!。SLICE(\"Hello happy world!\",6,11)返回happy。"
+		}, {
+			"funName": "SPLIT",
+			"description": "SPLIT(value,separator,howmany)把一个字符串分割成字符串数组。",
+			"demo": "SPLIT(\"2:3:4:5\",\":\")返回2,3,4,5。SPLIT(\"Hello happy world!\",\" \",2)返回Hello,happy。"
+		}, {
+			"funName": "SUBSTR",
+			"description": "SUBSTR(value,start,length)在字符串中抽取从 start 下标开始的指定数目的字符。",
+			"demo": "SUBSTR(\"Hello world!\",3,7)返回lo worl。"
+		}, {
+			"funName": "SUBSTRING",
+			"description": "SUBSTRING(value,start,stop)提取字符串中介于两个指定下标之间的字符。",
+			"demo": "SUBSTRING(\"Hello world!\",3,7)返回lo w。SUBSTRING(\"Hello world!\",3)返回lo world!。"
+		}, {
+			"funName": "TOLOCALELOWERCASE",
+			"description": "TOLOCALELOWERCASE(value)把字符串转换为小写。",
+			"demo": "TOLOCALELOWERCASE(\"HELLO WORLD\")返回hello world。"
+		}, {
+			"funName": "TOLOCALEUPPERCASE",
+			"description": "TOLOCALEUPPERCASE(value)把字符串转换为大写。",
+			"demo": "TOLOCALEUPPERCASE(\"hello world\")返回HELLO WORLD。"
+		}]
+	}, {
+		"typeName": "日期函数",
+		"funs": [{
+			"funName": "date",
+			"description": "date()返回当前日期。",
+			"demo": "date()返回当前日期。"
+		}, {
+			"funName": "time",
+			"description": "time(d)返回当前时间。",
+			"demo": "time(date())返回当前时间。"
+		}, {
+			"funName": "DAYSDELTA",
+			"description": "DAYSDELTA(d1, d2)返回日期d1与d2之间相距的多少天，d1, d2为字符串类型",
+			"demo": "DAYSDELTA('2018-03-15', '2018-03-18')返回3。"
+		}, {
+			"funName": "MONTHSDELTA",
+			"description": "MONTHSDELTA(d1, d2)返回日期d1与d2之间相距的多少月，d1, d2为字符串类型",
+			"demo": "MONTHSDELTA('2017-03-15', '2018-03-15')返回12。"
+		}, {
+			"funName": "WEEKSDELTA",
+			"description": "WEEKSDELTA(d1, d2)返回日期d1与d2之间相距的多少周，d1, d2为字符串类型",
+			"demo": "WEEKSDELTA('2017-03-15', '2018-03-15')返回52。"
+		}, {
+			"funName": "GETTIME",
+			"description": "GETTIME()返回从 1970 年 1 月 1 日至今的毫秒数。",
+			"demo": "GETTIME()"
+		}, {
+			"funName": "STRTODATE",
+			"description": "STRTODATE(date,formatStr)日期格式化。格式 YYYY/yyyy/YY/yy 表示年份  ,MM/M 月份,dd/DD/d/D 日期,hh/HH/h/H 时间,mm/m 分钟,ss/SS/s/S 秒",
+			"demo": "STRTODATE(date(),\"yyyy-MM-dd hh:mm:ss\")返回当前日期时间2018-12-27 11:05:41。STRTODATE(\"2018/11/11 09:09:09\",\"yy-M-d HH:mm:SS\")返回18-11-11 09:09:09。"
+		}, {
+			"funName": "DAYSDIFF",
+			"description": "DAYSDIFF(d1,d2)返回日期d1与d2还有几天或已经过了几天,正数表示还有几天,负数表示已经过了几天,d1, d2为字符串类型",
+			"demo": "DAYSDIFF(\"2020/03/01\",\"2020/04/01\")返回31;DAYSDIFF(\"2020/03/01\",\"2020/02/01\")返回-29。"
+		}, {
+			"funName": "CURMONTHDAYS",
+			"description": "CURMONTHDAYS()返回当前月总共有多少天",
+			"demo": "CURMONTHDAYS()返回当前月的天数。"
+		}, {
+			"funName": "GETMONTHDAYS",
+			"description": "GETMONTHDAYS(year, month)返回year年的month月的天数",
+			"demo": "GETMONTHDAYS(2020,2)返回29。"
+		}, {
+			"funName": "CURMONTHFIRSTDAY",
+			"description": "CURMONTHFIRSTDAY(formatStr)按照格式返回当前月的第一天",
+			"demo": "CURMONTHFIRSTDAY(\"yyyyMMdd\")返回格式为yyyyMMdd的当前月的第一天。"
+		}, {
+			"funName": "GETMONTHFIRSTDAY",
+			"description": "GETMONTHFIRSTDAY(year, month, formatStr)按照格式返回year年的month月的第一天",
+			"demo": "GETMONTHFIRSTDAY(2020,1,\"yyyyMMdd\")返回20200101。"
+		}]
+	},
+	{
+		"typeName": "EXCEL函数",
+		"funs": [{
+				"funName": "ABS",
+				"description": "ABS(number)返回数字的绝对值。 一个数字的绝对值是该数字不带其符号的形式。",
+				"demo": "ABS(-2)返回-2的绝对值2。"
+			}, {
+				"funName": "ACOS",
+				"description": "ACOS(x)返回一个数的反余弦值。返回的值是 0 到 PI 之间的弧度值。x必须是 -1.0 ~ 1.0 之间的数。",
+				"demo": "ACOS(0.64)返回0.8762980611683406。"
+			},
+			{
+				"funName": "ACOSH",
+				"description": "ACOSH(number)返回数字的反双曲余弦值。",
+				"demo": "ACOSH(60)返回4.787422291102689。"
+			},
+			{
+				"funName": "ACOT",
+				"description": "ACOT(number)返回数字的反余切值的主值。",
+				"demo": "ACOT(2)返回0.4636476090008061。"
+			},
+			{
+				"funName": "ACOTH",
+				"description": "ACOTH(number)返回数字的反余切值的主值。",
+				"demo": "ACOTH(2)返回0.5493061443340549。"
+			},
+			{
+				"funName": "AND",
+				"description": "AND(...value)用于确定测试中的所有条件是否均为 true。",
+				"demo": "AND(A2>1,A2<100)如果A2大于1并且小于100，则显示 true；否则显示 false。"
+			},
+			{
+				"funName": "ASIN",
+				"description": "ASIN(x)返回一个数的反正弦值。返回的值是 -PI/2 到 PI/2 之间的弧度值。x必须是一个数值，该值介于 -1.0 ~ 1.0 之间。",
+				"demo": "ASIN(0.64)返回0.6944982656265559。"
+			},
+			{
+				"funName": "ASINH",
+				"description": "ASINH(x)返回数字的反双曲正弦值。",
+				"demo": "ASINH(-2.5)返回-1.6472311463710965。"
+			}, {
+				"funName": "ATAN",
+				"description": "ATAN(x)返回数字的反正切值。返回的值是 -PI/2 到 PI/2 之间的弧度值。x必须是一个数值。",
+				"demo": "ATAN(0.50)返回0.4636476090008061。"
+			},
+			{
+				"funName": "ATANH",
+				"description": "ATANH(number)返回数字的反双曲正切值。 Number 必须介于 -1 到 1 之间（不包括 -1 和 1）。 反双曲正切值是指双曲正切值为 number 的值，因此 ATANH(TANH(number)) 等于 number。",
+				"demo": "ATANH(0.76159416)返回1.00000001。"
+			},
+			{
+				"funName": "AVERAGE",
+				"description": "AVERAGE(...)返回参数的平均值 (算术平均值)。",
+				"demo": "AVERAGE(4,5,6,7,5,4,3)返回4.857142857142857。"
+			},
+			{
+				"funName": "AVERAGEIF",
+				"description": "AVERAGEIF(range,criteria,average_range)返回某个区域内满足给定条件的所有单元格的平均值（算术平均值）。",
+				"demo": "AVERAGEIF([1,2,3,4],\" <= 2 \")返回1.5。"
+			},
+			{
+				"funName": "BASE",
+				"description": "BASE(number,radix,min_length)将数字转换为具备给定基数的文本表示。",
+				"demo": "BASE(7,2)返回111。BASE(100,16)返回64。BASE(15,2,10)返回0000001111。"
+			},
+			{
+				"funName": "BIN2DEC",
+				"description": "Bin2DEC(number)将二进制数转换为十进制数。",
+				"demo": "Bin2DEC(1100100)返回100。Bin2DEC(1111111111)返回-1。"
+			},
+			{
+				"funName": "BIN2HEX",
+				"description": "BIN2HEX(number, places)将二进制数转换为十六进制数。",
+				"demo": "BIN2HEX(11111011, 4)返回00fb。BIN2HEX(1110)返回e。"
+			},
+			{
+				"funName": "BIN2OCT",
+				"description": "BIN2OCT(number, places)将二进制数转换为十六进制数。",
+				"demo": "BIN2OCT(1001, 3)返回011。BIN2OCT(1100100)返回144。"
+			},
+			{
+				"funName": "BITAND",
+				"description": "BITAND( number1, number2)返回两个数的按位与。",
+				"demo": "BITAND(1,5)返回1。BITAND(13,25)返回9。"
+			},
+			{
+				"funName": "BITLSHIFT",
+				"description": "BITLSHIFT(number, shift)返回向左移动指定位数后的数值。",
+				"demo": "BITLSHIFT(4,2)返回16。"
+			},
+			{
+				"funName": "BITOR",
+				"description": "BITOR(number1, number2)返回两个数的按位\"或\"。",
+				"demo": "BITOR(23,10)返回31。"
+			},
+			{
+				"funName": "BITRSHIFT",
+				"description": "BITRSHIFT(number, shift)返回向左移动指定位数后的数值。",
+				"demo": "BITRSHIFT(13,2)返回3。"
+			},
+			{
+				"funName": "BITXOR",
+				"description": "BITXOR(number1, number2)返回两个数值的按位\"异或\"结果。",
+				"demo": "BITXOR(5,3)返回6。"
+			},
+			{
+				"funName": "CHAR",
+				"description": "CHAR(number)返回对应于数字代码的字符。",
+				"demo": "CHAR(65)返回A。CHAR(33)返回!。"
+			},
+			{
+				"funName": "CHOOSE",
+				"description": "CHOOSE()使用 index_num 返回数值参数列表中的数值。 使用 CHOOSE 可以根据索引号从最多 254 个数值中选择一个。 ",
+				"demo": "CHOOSE(2,\"hello\",\"world\",\"!\")返回world。"
+			},
+			{
+				"funName": "CODE",
+				"description": "CODE(text)返回文本字符串中第一个字符的数字代码。 ",
+				"demo": "CODE(\"A\")返回65。CODE(\"!\")返回33。"
+			},
+			{
+				"funName": "COLUMN",
+				"description": "COLUMN(reference) 函数返回给定单元格引用的列号。",
+				"demo": "COLUMN(D10)返回4"
+			},
+			{
+				"funName": "COMBIN",
+				"description": "COMBIN(number, number_chosen)返回给定数目的项目的组合数。",
+				"demo": "COMBIN(8,2)返回28。"
+			},
+			{
+				"funName": "COMBINA",
+				"description": "COMBIN(number, number_chosen)返回给定数目的项的组合数（包含重复）。",
+				"demo": "COMBINA(4,3)返回20。"
+			},
+			{
+				"funName": "COMPLEX",
+				"description": "COMPLEX(real, imaginary, suffix)将实系数及虚系数转换为 x+yi 或 x+yj 形式的复数。",
+				"demo": "COMPLEX(3,4)返回3+4i。COMPLEX(3,4,\"j\")返回3+4j。"
+			},
+			{
+				"funName": "CONCATENATE",
+				"description": "CONCATENATE(...value)将两个或多个文本字符串联接为一个字符串。",
+				"demo": "CONCATENATE(B2, \" \", C2)联接三部分内容：单元格 B2 中的字符串、空格字符以及单元格 C2 中的值。"
+			},
+			{
+				"funName": "CONVERT",
+				"description": "CONVERT(number,from_unit,to_unit)将数字从一种度量系统转换为另一种度量系统。",
+				"demo": "CONVERT(1, \"lbm\", \"kg\")将 1 磅转换为千克,返回0.45359237。CONVERT(CONVERT(100,\"ft\",\"m\"),\"ft\",\"m\")将 100 平方英尺转换为平方米返回9.290304。"
+			},
+			{
+				"funName": "COS",
+				"description": "COS(x)返回一个数字的余弦值。x 的余弦值。返回的是 -1.0 到 1.0 之间的数。x必须是一个数值。",
+				"demo": "COS(0)返回1。"
+			},
+			{
+				"funName": "COSH",
+				"description": "COSH(number)返回数字的双曲余弦值。",
+				"demo": "COSH(4)返回27.308232836016487。"
+			},
+			{
+				"funName": "COT",
+				"description": "COT(number)返回以弧度表示的角度的余切值。",
+				"demo": "COT(30)返回-0.15611995216165922。"
+			},
+			{
+				"funName": "COTH",
+				"description": "COTH(number)返回一个双曲角度的双曲余切值。",
+				"demo": "COTH(2)返回1.0373147207275482。"
+			},
+			{
+				"funName": "COUNT",
+				"description": "COUNT(...)计算包含数字的单元格个数以及参数列表中数字的个数。",
+				"demo": "COUNT(3,2,4,5,6,[9,7,12,15,17])返回10。"
+			},
+			{
+				"funName": "CSC",
+				"description": "CSC(number)返回角度的余割值，以弧度表示。",
+				"demo": "CSC(15)返回1.5377805615408537。"
+			},
+			{
+				"funName": "CSCH",
+				"description": "CSCH(number)返回角度的双曲余割值，以弧度表示。",
+				"demo": "CSCH(1.5)返回0.46964244059522464。"
+			},
+			{
+				"funName": "DEC2BIN",
+				"description": "DEC2BIN(number, places)将十进制数转换为二进制数。",
+				"demo": "DEC2BIN(9, 4)返回1001。DEC2BIN(-100)返回1110011100。"
+			},
+			{
+				"funName": "DEC2HEX",
+				"description": "DEC2HEX(number, places)将十进制数转换为十六进制数。",
+				"demo": "DEC2HEX(100, 4)返回0064。DEC2HEX(-54)返回ffffffffca。DEC2HEX(28)返回1c。"
+			},
+			{
+				"funName": "DEC2OCT",
+				"description": "DEC2OCT(number, places)将十进制数转换为八进制数。",
+				"demo": "DEC2OCT(58, 3)返回072。DEC2OCT(-100)返回7777777634。"
+			},
+			{
+				"funName": "DELTA",
+				"description": "DELTA(number1, number2)检验两个值是否相等。如果 number1=number2，则返回 1；否则返回 0。",
+				"demo": "DELTA(5, 4)返回0。DELTA(5, 5)返回1。"
+			},
+			{
+				"funName": "DOLLAR",
+				"description": "DOLLAR(number, decimals)使用货币格式将数字转换为文本，并将小数舍入到指定的位数。 ",
+				"demo": "DOLLAR(-0.123,4)返回($0.1230)。"
+			},
+			{
+				"funName": "DATE",
+				"description": "DATE(year,month,day)函数返回表示特定日期的连续序列号。",
+				"demo": "DATE(2020,1,2)返回 周四 1月 2 00:00:00 2020 GMT+0800。"
+			},
+			{
+				"funName": "DATEVALUE",
+				"description": "DATEVALUE(date_text)将存储为文本的日期转换为日期的序列号。",
+				"demo": "DATEVALUE(\"2011/02/23\")返回40597。"
+			},
+			{
+				"funName": "DAY",
+				"description": "DAY(d)返回指定日期中的日(1 ~ 31)。",
+				"demo": "DAY(TODAY())返回当前日期中的日。DAY(\"2018/12/30\")返回30。"
+			},
+			{
+				"funName": "DAYS",
+				"description": "DAYS(end_date, start_date)返回两个日期之间的天数。",
+				"demo": "DAYS(\"2011-03-15\",\"2011-02-01\")返回42。"
+			},
+			{
+				"funName": "DAYS360",
+				"description": "DAYS360(start_date, end_date, method)按照一年 360 天的算法（每个月以 30 天计，一年共计 12 个月），DAYS360 函数返回两个日期间相差的天数。",
+				"demo": "DAYS360(\"2011-01-01\",\"2011-12-31\")返回360。"
+			},
+			{
+				"funName": "DECIMAL",
+				"description": "DECIMAL(number, radix)按给定基数将数字的文本表示形式转换成十进制数。",
+				"demo": "DECIMAL(\"FF\",16)返回255。DECIMAL(111,2)返回7。"
+			},
+			{
+				"funName": "DEGREES",
+				"description": "DEGREES(number)将弧度转换为度。",
+				"demo": "DEGREES(PI())返回180。"
+			},
+			{
+				"funName": "EDATE",
+				"description": "EDATE(start_date, months)返回表示某个日期的序列号，该日期与指定日期 (start_date) 相隔（之前或之后）指示的月份数。",
+				"demo": "EDATE(\"2011 - 01 - 15\",1)返回40589.333333333336。"
+			},
+			{
+				"funName": "EOMONTH",
+				"description": "EOMONTH(start_date, months)返回某个月份最后一天的序列号，该月份与 start_date 相隔（之后或之后）指示的月份数。 ",
+				"demo": "EOMONTH(\"2011 - 01 - 01\",1)返回40602。"
+			},
+			{
+				"funName": "EXACT",
+				"description": "EXACT(text1, text2)比较两个文本字符串，如果它们完全相同，则返回 true，否则返回 false。 ",
+				"demo": "EXACT(\"word\",\"Word\")返回false。EXACT(\"word\",\"word\")返回true。"
+			},
+			{
+				"funName": "EVEN",
+				"description": "EVEN(number)返回数字向上舍入到的最接近的偶数。 ",
+				"demo": "EVEN(1.5)返回2。EVEN(3)返回4"
+			},
+			{
+				"funName": "FACT",
+				"description": "FACT(number)返回数字的阶乘。",
+				"demo": "FACT(5)返回120。FACT(0)返回1。"
+			},
+			{
+				"funName": "FACTDOUBLE",
+				"description": "FACTDOUBLE(number)返回数字的双倍阶乘。如果参数 Number 为偶数：n!!=n(n-2)(n-4)...(4)(2) 如果参数 Number 为奇数：n!!=n(n-2)(n-4)...(3)(1) ",
+				"demo": "FACTDOUBLE(5)返回15。FACTDOUBLE(6)返回48。"
+			},
+			{
+				"funName": "FALSE",
+				"description": "FALSE()返回逻辑值false。",
+				"demo": "FALSE()返回false。"
+			},
+			{
+				"funName": "FIND",
+				"description": "FIND(find_text, within_text, position)函数用于在第二个文本串中定位第一个文本串，并返回第一个文本串的起始位置的值，该值从第二个文本串的第一个字符算起。 ",
+				"demo": "FIND(\"M\",\"Miriam McGovern\")返回1。FIND(\"M\",\"Miriam McGovern\"，3)返回8。"
+			},
+			{
+				"funName": "FIXED",
+				"description": "FIXED(number, decimals, no_commas)将数字舍入到指定的小数位数，使用句点和逗号，以十进制数格式对该数进行格式设置，并以文本形式返回结果。",
+				"demo": "FIXED(1234.567, 1, false)返回1,234.6。FIXED(-1234.567, -1, true)返回-1230。"
+			},
+			{
+				"funName": "FLOOR",
+				"description": "FLOOR(number, significance)将参数 number 向下舍入（沿绝对值减小的方向）为最接近的 significance 的倍数。",
+				"demo": "FLOOR(3.7,2)返回2。FLOOR(-2.5,-2)返回-2。"
+			},
+			{
+				"funName": "IF",
+				"description": "IF(cons,value1,value2)根据逻辑条件判断取值：TRUE取value1，FALSE取value2。",
+				"demo": "IF(1<2,'真','假')返回真。"
+			},
+			{
+				"funName": "GCD",
+				"description": "GCD(...)返回两个或多个整数的最大公约数。 最大公约数是能够同时整除 number1 和 number2 而没有余数的最大整数。",
+				"demo": "GCD(24, 36)返回12。GCD(5, 2)返回1。"
+			},
+			{
+				"funName": "GESTEP",
+				"description": "GESTEP(number, step)如果 number ≥ step，则返回 1；否则返回 0（零）。 ",
+				"demo": "=GESTEP(5, 4)返回1。GESTEP(-1)返回0。"
+			},
+			{
+				"funName": "HEX2BIN",
+				"description": "HEX2BIN(number, places)将十六进制数转换为二进制数。",
+				"demo": "HEX2BIN(\"F\", 8)返回00001111。HEX2BIN(\"B7\")返回10110111。"
+			},
+			{
+				"funName": "HEX2DEC",
+				"description": "HEX2DEC(number, places)将十六进制数转换为十进制数。",
+				"demo": "HEX2DEC(\"A5\")返回165。HEX2DEC(\"FFFFFFFF5B\")返回-165。"
+			},
+			{
+				"funName": "HEX2OCT",
+				"description": "HEX2OCT(number, places)将十六进制数转换为八进制数。",
+				"demo": "HEX2OCT(\"F\", 3)返回017。HEX2OCT(\"3B4E\")返回35516。"
+			},
+			{
+				"funName": "HOUR",
+				"description": "HOUR(serial_number)返回时间值的小时数。 ",
+				"demo": "HOUR(\"2011 - 07 - 18 07: 45\")返回7。"
+			},
+			{
+				"funName": "IMABS",
+				"description": "IMABS(inumber)返回以 x+yi 或 x+yj 文本格式表示的复数的绝对值（模）。",
+				"demo": "IMABS(\"5 + 12 i\")返回13。"
+			},
+			{
+				"funName": "IMAGINARY",
+				"description": "IMAGINARY(inumber)返回以 x+yi 或 x+yj 文本格式表示的复数的虚系数。",
+				"demo": "IMAGINARY(\"3 + 4 i\")返回4。IMAGINARY(\"0 - j\")返回-1。"
+			},
+			{
+				"funName": "IMCONJUGATE",
+				"description": "IMCONJUGATE(inumber)返回以 x+yi 或 x+yj 文本格式表示的复数的共轭复数。",
+				"demo": "IMCONJUGATE(\"3 + 4 i\")返回3-4i。"
+			},
+			{
+				"funName": "IMDIV",
+				"description": "IMDIV(inumber1, inumber2)返回以 x+yi 或 x+yj 文本格式表示的两个复数的商。",
+				"demo": "IMDIV(\" - 238 + 240 i\",\"10 + 24 i\")返回5+12i。"
+			},
+			{
+				"funName": "IMREAL",
+				"description": "IMREAL(inumber1)返回以 x+yi 或 x+yj 文本格式表示的复数的实系数。",
+				"demo": "IMREAL(\"6 - 9 i\")返回6。"
+			},
+			{
+				"funName": "IMSUB",
+				"description": "IMSUB(inumber1, inumber2)返回以 x+yi 或 x+yj 文本格式表示的两个复数的差。",
+				"demo": "IMSUB(\"13 + 4 i\",\"5 + 3 i\")返回8+i。"
+			},
+			{
+				"funName": "IMSUM",
+				"description": "IMSUM(inumber1, inumber2)返回以 x+yi 或 x+yj 文本格式表示的两个或多个复数的和。",
+				"demo": "IMSUM(\"3 + 4 i\",\"5 - 3 i\")返回8+i。"
+			},
+			{
+				"funName": "INDEX",
+				"description": "INDEX(array, colum_count, row_num, column_num)返回colum_count列数的array数组中的元素值，此值的位置是row_mun行,column_num列。",
+				"demo": "INDEX([1,2,3,4],2,2,1)数组[1,2,3,4]为2列的数组，取第2行，第一列的值，返回3。"
+			},
+			{
+				"funName": "INT",
+				"description": "INT( number )将数字向下舍入到最接近的整数。",
+				"demo": "INT(8.9)返回8,INT(-8.9)返回-9。"
+			},
+			{
+				"funName": "ISOWEEKNUM",
+				"description": "ISOWEEKNUM(date)返回给定日期在全年中的 ISO 周数。",
+				"demo": "ISOWEEKNUM(\"2012-03-09\")返回10。"
+			},
+			{
+				"funName": "LCM",
+				"description": "LCM(...)返回两个或多个整数的最小公倍数。 最小公倍数是所有整数参数 number1、number2 等的倍数中的最小正整数。 ",
+				"demo": "LCM(24, 36)返回72。GCD(5, 2)返回10"
+			},
+			{
+				"funName": "LEFT",
+				"description": "LEFT(text, num_chars)从文本字符串text的第一个字符开始返回指定个数num_chars的字符。",
+				"demo": "LEFT(\"Hello\")返回H。LEFT(\"Hello\",3)返回Hel"
+			},
+			{
+				"funName": "LEN",
+				"description": "LEN(text)返回文本字符串text中的字符个数。",
+				"demo": "LEN(\"中文\")返回2。LEN(\"Hello\")返回5"
+			},
+			{
+				"funName": "LN",
+				"description": "LN( number )返回数字的自然对数。 自然对数以常数 e (2.71828182845904) 为底。",
+				"demo": "LN(86)返回4.454347296253507,LN(2.7182818)返回0.9999999895305024。"
+			},
+			{
+				"funName": "LOG",
+				"description": "LOG(number, base)根据指定底数返回数字的对数。",
+				"demo": "LOG(8, 2)返回3。LOG(10)返回1。"
+			},
+			{
+				"funName": "LOG10",
+				"description": "LOG10(number)返回数字以 10 为底的对数。",
+				"demo": "LOG(86)返回1.9344984512435675。LOG10(10)返回1。LOG10(100000)返回5。"
+			},
+			{
+				"funName": "LOWER",
+				"description": "LOWER(text)将一个文本字符串中的所有大写字母转换为小写字母。",
+				"demo": "LOWER(\"E. E. Cummings\")返回e. e. cummings。"
+			},
+			{
+				"funName": "MATCH",
+				"description": "MATCH(lookup_value, lookup_array, match_type)在数组lookup_array中搜索特定的lookup_value项，然后返回该项在此区域中的相对位置。match_type=1或省略：MATCH 查找小于或等于 lookup_value 的最大值。 lookup_array 参数中的值必须以升序排序，例如：...-2, -1, 0, 1, 2, ..., A-Z。match_type=0：MATCH 查找完全等于 lookup_value 的第一个值。 lookup_array 参数中的值可按任何顺序排列。match_type=-1：MATCH 查找大于或等于 lookup_value 的最小值。 lookup_array 参数中的值必须按降序排列，例如：Z-A, ...2, 1, 0, -1, -2, ... 等等。",
+				"demo": "MATCH(2.3,[0,1,2,3],1)返回3。MATCH(4.5,[6,5,4,0],-1)返回2。MATCH(\"world\",[\"Hello\",\"world\",\"!\"],0)返回2"
+			},
+			{
+				"funName": "MAX",
+				"description": "MAX(x...)返回指定的数中带有较大的值的那个数。",
+				"demo": "MAX(7.25,7.30,1,3)返回7.3。"
+			},
+			{
+				"funName": "MDETERM",
+				"description": "MDETERM(array)返回一个数组的矩阵行列式的值。",
+				"demo": "MDETERM([[3,6,1],[1,1,0],[3,10,2]])返回0.9999999999999998。MDETERM([[3,6],[1,1]])返回-3"
+			},
+
+			{
+				"funName": "MID",
+				"description": "MID(text, start_num, num_chars)返回文本字符串text中从指定位置start_num开始的特定数目num_chars的字符。",
+				"demo": "MID(\"Hello\",2,2)返回el"
+			},
+			{
+				"funName": "MIN",
+				"description": "MIN(x...)返回指定的数中带有较小的值的那个数。",
+				"demo": "MIN(7.25,7.30,1,3)返回1。"
+			},
+			{
+				"funName": "MINUTE",
+				"description": "MINUTE(serial_number)返回时间值中的分钟。",
+				"demo": "MINUTE(\"2011-01-15 12:45:00\")返回45。"
+			},
+
+			{
+				"funName": "MOD",
+				"description": "MOD(number, divisor)返回number除以divisor的余数。",
+				"demo": "MOD(3, 2)返回1。MOD(-3, -2)返回-1"
+			},
+			{
+				"funName": "MODE",
+				"description": "MODE(...value)返回数组或数据区域中出现频率最高或重复出现的值。 ",
+				"demo": "MODE([11,22,33,14],14)返回14。MODE(11,22,33,14)返回11。"
+			},
+			{
+				"funName": "MONTH",
+				"description": "MONTH(d)返回指定日期月份。",
+				"demo": "MONTH(TODAY())返回当前月份。MONTH(\"2018/11/29\")返回11。"
+			},
+			{
+				"funName": "MROUND",
+				"description": "MROUND(number, multiple)返回一个舍入到所需倍数的数字。",
+				"demo": "MROUND(10, 3)返回9。MROUND(-10, -3)返回-9。"
+			},
+			{
+				"funName": "MULTINOMIAL",
+				"description": "MULTINOMIAL()返回参数和的阶乘与各参数阶乘乘积的比值。",
+				"demo": "MULTINOMIAL(2, 3, 4)返回1260。"
+			},
+			{
+				"funName": "MUNIT",
+				"description": "MUNIT(dimension) 函数返回指定维度的单位矩阵。",
+				"demo": "MUNIT(3)返回1,0,0,0,1,0,0,0,1。"
+			},
+			{
+				"funName": "NETWORKDAYS",
+				"description": "NETWORKDAYS(start_date, end_date, holidays)返回参数 start_date 和 end_date 之间完整的工作日数值。",
+				"demo": "NETWORKDAYS(\"2012-10-01\",\"2013-03-01\")返回110。NETWORKDAYS(\"2012-10-01\",\"2013-03-01\",[\"2012-11-22\",\"2012-12-04\",\"2013-01-21\"])返回107。"
+			},
+			{
+				"funName": "NOT",
+				"description": "NOT(logical)确保一个值不等同于另一值。",
+				"demo": "NOT(50>100)返回true。"
+			},
+			{
+				"funName": "NOW",
+				"description": "NOW(formatStr)按照formatStr格式返回当前日期和时间。",
+				"demo": "NOW()返回2020/08/08 08:08。NOW(\"yyyy-M-D h:m\")返回2020-8-8 8:8。"
+			},
+			{
+				"funName": "OCT2BIN",
+				"description": "OCT2BIN(number)将八进制数转换为二进制数。",
+				"demo": "OCT2BIN(3, 3)返回011。"
+			},
+			{
+				"funName": "OCT2DEC",
+				"description": "OCT2DEC(number)将八进制数转换为十进制数。",
+				"demo": "OCT2DEC(54)返回44。OCT2DEC(7777777533)返回-165。"
+			},
+			{
+				"funName": "OCT2HEX",
+				"description": "OCT2HEX(number)将八进制数转换为十六进制数。",
+				"demo": "OCT2HEX(100, 4)返回0040。"
+			},
+			{
+				"funName": "ODD",
+				"description": "ODD(number)返回数字向上舍入到的最接近的奇数。",
+				"demo": "ODD(1.5)返回真3。ODD(-2)返回真-3"
+			},
+			{
+				"funName": "OR",
+				"description": "OR(...value)集合中的元素有一个为真的时候为真。",
+				"demo": "OR(3>2,3>1)返回真true;OR(1>3,3>1)返回真true。"
+			},
+			{
+				"funName": "PI",
+				"description": "PI()返回数字 3.141592653589793（数学常量 pi）。",
+				"demo": "PI()返回3.141592653589793。"
+			},
+			{
+				"funName": "POWER",
+				"description": "POWER(number, power)返回数字乘幂的结果。",
+				"demo": "POWER(5,2)返回25。"
+			},
+			{
+				"funName": "PRODUCT",
+				"description": "PRODUCT(...)函数将以参数形式给出的所有数字相乘, 并返回该结果。",
+				"demo": "PRODUCT(H1:J1, 2)返回H1-J1单元格的数字相乘再乘以2的值。PRODUCT(1,2,3,4)返回24"
+			},
+			{
+				"funName": "PROPER",
+				"description": "PROPER(text)将文本字符串的首字母转换成大写。 将其余字母转换为小写。",
+				"demo": "PROPER(\"this is a TITLE\")返回This Is A Title。PROPER(\"76BudGet\")返回76budget"
+			},
+			{
+				"funName": "QUOTIENT",
+				"description": "QUOTIENT(numerator, denominator)返回除法的整数部分。",
+				"demo": "QUOTIENT(5, 2)返回2。QUOTIENT(4.5, 3.1)返回1。QUOTIENT(-10, 3)返回-3。"
+			},
+			{
+				"funName": "RADIANS",
+				"description": "RADIANS(angle)将度数转换为弧度。",
+				"demo": "RADIANS(270)返回4.71238898038469。"
+			},
+			{
+				"funName": "RAND",
+				"description": "RAND()返回介于 0 ~ 1 之间的一个随机数。",
+				"demo": "RAND()"
+			},
+			{
+				"funName": "RANDBETWEEN",
+				"description": "RANDBETWEEN(bottom, top)返回位于两个指定数之间的一个随机整数。",
+				"demo": "RANDBETWEEN(1,100)介于 1 到 100 之间的一个随机数（变量）"
+			},
+			{
+				"funName": "RANK",
+				"description": "RANK(num,ref,order)返回一列数字的数字排位。 数字的排位是相对于列表中的其他值的大小。-1表示不在列表中",
+				"demo": "RANK(B1,B1:D1)返回B1在B1-D1范围内从大到小所在的位置；RANK(B1,B1:D1,1)返回B1在B1-D1范围内从小到大所在的位置"
+			},
+			{
+				"funName": "REPLACE",
+				"description": "REPLACE(text, position, length, new_text)根据指定的字符数，REPLACE 将部分文本字符串替换为不同的文本字符串。",
+				"demo": "REPLACE(\"abcdefghijk\",6,5,\"*\")返回abcde*k。REPLACE(\"123456\",1,3,\"@\")返回@456。"
+			},
+			{
+				"funName": "RIGHT",
+				"description": "RIGHT(text,num_chars)根据所指定的字符数num_chars返回文本字符串text中最后一个或多个字符。",
+				"demo": "RIGHT(\"Hello\",3)返回llo。RIGHT(\"Hello\",8)返回Hello"
+			},
+			{
+				"funName": "REPT",
+				"description": "REPT(text, number_times)将文本重复一定次数。",
+				"demo": "REPT(\"*-\", 3)返回*-*-*-。REPT(\"-\",10)返回----------"
+			},
+			{
+				"funName": "ROUND",
+				"description": "ROUND(number, num_digits)函数将数字四舍五入到指定的位数。",
+				"demo": "ROUND(2.15, 1)返回2.2。ROUND(2.149, 1)返回2.1。ROUND(-1.475, 2)返回-1.48。ROUND(21.5, -1)返回20。"
+			},
+			{
+				"funName": "ROUNDDOWN",
+				"description": "ROUNDDOWN(number, num_digits)朝着零的方向将数字进行向下舍入。num_digits表示要将数字舍入到的位数。",
+				"demo": "ROUNDDOWN(3.2, 0)返回3。ROUNDDOWN(-3.14159, 1)返回-3.1。"
+			},
+			{
+				"funName": "ROUNDUP",
+				"description": "ROUNDUP(number, num_digits)朝着远离零的方向将数字进行向上舍入。num_digits表示要将数字舍入到的位数。",
+				"demo": "ROUNDUP(3.2, 0)返回4。ROUNDUP(-3.14159, 1)返回-3.2。"
+			},
+			{
+				"funName": "SEARCH",
+				"description": "SEARCH(find_text, within_text, position)函数可在第二个文本字符串中查找第一个文本字符串，并返回第一个文本字符串的起始位置的编号，该编号从第二个文本字符串的第一个字符算起。",
+				"demo": "SEARCH(\"e\",\"Statements\",6)返回7。SEARCH(\"margin\",\"Profit Margin\")返回8。"
+			},
+			{
+				"funName": "SEC",
+				"description": "SEC(number)返回角度的正割值。",
+				"demo": "SEC(45)返回1.9035944074044246。SEC(30)返回6.482921234962678。"
+			},
+			{
+				"funName": "SECH",
+				"description": "SECH(number)返回角度的双曲正割值。",
+				"demo": "SECH(45)返回5.725037161098787e-20。SECH(30)返回1.8715245937680347e-13。"
+			},
+			{
+				"funName": "SECOND",
+				"description": "SECOND(serial_number)返回时间值的秒数。",
+				"demo": "SECOND(\"2011-01-01 04:48:18\")返回18。SECOND(\"2011-01-01 04:48\")返回0。"
+			},
+			{
+				"funName": "SIN",
+				"description": "SIN(x)返回一个数字的正弦。返回x 的正弦值。返回值在 -1.0 到 1.0 之间。x是一个以弧度表示的角，将角度乘以 0.017453293 （2PI/360）即可转换为弧度。",
+				"demo": "SIN(0)返回0"
+			},
+			{
+				"funName": "SINH",
+				"description": "SINH(number)返回数字的双曲正弦。",
+				"demo": "2.868*SINH(0.0342*1.03)返回获得小于 1.03 秒的结果的概率0.10104906311828733。"
+			},
+			{
+				"funName": "SQRT",
+				"description": "SQRT(number)返回一个数的平方根。返回 x 的平方根。如果 x 小于 0，则返回 NaN。x必须是大于等于 0 的数。",
+				"demo": "SQRT(9)返回3"
+			},
+			{
+				"funName": "SQRTPI",
+				"description": "SQRTPI(number)返回某数与 pi 的乘积的平方根。",
+				"demo": "SQRTPI(1)返回1.7724538509055159。SQRTPI(2)返回2.5066282746310002。"
+			},
+			{
+				"funName": "SUM",
+				"description": "SUM(x...)返回参数的和。",
+				"demo": "SUM(1,2,3,4,5)返回15。"
+			},
+			{
+				"funName": "SUBSTITUTE",
+				"description": "SUBSTITUTE(text, old_text, new_text, occurrence)在文本字符串中用 new_text 替换 old_text。",
+				"demo": "SUBSTITUTE(\"销售数据\", \"销售\", \"成本\")返回成本数据。SUBSTITUTE(\"2011年第一季度\", \"1\", \"2\", 2)返回2012年第一季度。"
+			},
+			{
+				"funName": "SUMIF",
+				"description": "SUMIF(range, criteria)对范围中符合指定条件的值求和。",
+				"demo": "SUMIF([1,2,3,4],\" <= 2 \")返回3。"
+			},
+			{
+				"funName": "SUMPRODUCT",
+				"description": "SUMPRODUCT(...)返回对应的区域或数组的乘积之和。 ",
+				"demo": "SUMPRODUCT([3,4],[5,6])返回39。"
+			},
+			{
+				"funName": "SUMSQ",
+				"description": "SUMSQ(...)返回参数的平方和。 ",
+				"demo": "SUMSQ(3,4)返回25。"
+			},
+			{
+				"funName": "T",
+				"description": "T(value)返回值引用的文字。 ",
+				"demo": "T(\"降雨量\")返回降雨量。T(19)返回空''。"
+			},
+			{
+				"funName": "TAN",
+				"description": "TAN(x)返回一个表示某个角的正切的数字。返回x 的正切值。x是一个以弧度表示的角，将角度乘以 0.017453293 （2PI/360）即可转换为弧度。",
+				"demo": "TAN(-0.50)返回-0.5463024898437905。"
+			},
+			{
+				"funName": "TANH",
+				"description": "TANH(number)返回数字的双曲正切。",
+				"demo": "TANH(-2)返回-0.9640275800758168。TANH(0.5)返回0.46211715726000974。"
+			},
+			{
+				"funName": "TIME",
+				"description": "TIME(hour, minute, second)返回特定时间的十进制数字。由 TIME 返回的十进制数字是一个范围在 0（零）到0.999988425925926之间的值，表示 0:00:00 (12:00:00 AM) 到 23:59:59 (11:59:59 P.M.) 之间的时间。",
+				"demo": "TIME(12,0,0)返回0.5。"
+			},
+			{
+				"funName": "TIMEVALUE",
+				"description": "TIMEVALUE(time_text)返回特定时间的十进制数字。由 TIME 返回的十进制数字是一个范围在 0（零）到0.999988425925926之间的值，表示 0:00:00 (12:00:00 AM) 到 23:59:59 (11:59:59 P.M.) 之间的时间。",
+				"demo": "TIMEVALUE(\"2011 - 08 - 22 06: 35\")返回0.2743055555555556。"
+			},
+			{
+				"funName": "TODAY",
+				"description": "TODAY()返回当天日期。",
+				"demo": "TODAY()返回 周六 8月 29 11:39:35 2020 GMT+0800。"
+			},
+			{
+				"funName": "TRIM",
+				"description": "TRIM(text)除了单词text之间的单个空格之外，移除文本中的所有空格。",
+				"demo": "TRIM(\" hello world !   \")返回hello world !"
+			},
+			{
+				"funName": "TRUE",
+				"description": "TRUE()返回逻辑值true。",
+				"demo": "TRUE()返回true。"
+			},
+			{
+				"funName": "TRUNC",
+				"description": "TRUNC(number,num_digits)将数字的小数部分截去，返回整数。",
+				"demo": "TRUNC(8.9)返回8。TRUNC(-8.9)返回-8。"
+			},
+			{
+				"funName": "TYPE",
+				"description": "TYPE(value)返回数值的类型。 当某一个函数的计算结果取决于特定单元格中数值的类型时，可使用函数 TYPE。",
+				"demo": "TYPE(1)返回1。TYPE(0/0)返回16。"
+			},
+			{
+				"funName": "UPPER",
+				"description": "UPPER(text)将一个文本字符串中的所有小写字母转换为大写字母。",
+				"demo": "UPPER(\"E. E. Cummings\")返回E. E. CUMMINGS。"
+			},
+			{
+				"funName": "VALUE",
+				"description": "VALUE(text)将表示数字的文本字符串转换为数字。",
+				"demo": "VALUE(\"$1,000\")返回1000。VALUE(\"16: 48: 00\")-VALUE(\"12: 00: 00\")返回17280。"
+			}, {
+				"funName": "WEEKDAY",
+				"description": "WEEKDAY(serial_number, return_type)返回对应于某个日期的一周中的第几天。 默认情况下，天数是 1（星期日）到 7（星期六）范围内的整数。",
+				"demo": "WEEKDAY(\"2008-02-14\")返回5。WEEKDAY(\"2008-02-14\",3)返回3。"
+			}, {
+				"funName": "WEEKNUM",
+				"description": "WEEKNUM(serial_number, return_type)返回特定日期的周数。 例如，包含 1 月 1 日的周为该年的第 1 周，其编号为第 1 周。",
+				"demo": "WEEKNUM(\"2012-03-09\",2)返回11。WEEKNUM(\"2012-03-09\")返回10。"
+			},
+			{
+				"funName": "WORKDAY",
+				"description": "WORKDAY(start_date, days, holidays)返回在某日期（起始日期）之前或之后、与该日期相隔指定工作日的某一日期的日期值。 工作日不包括周末和专门指定的假日。 ",
+				"demo": "WORKDAY(\"2008 - 10 - 01\",151,[\"11 / 26 / 2008\",\"12 / 4 / 2008\",\"1 / 21 / 2009\"])返回周二 5月 5 08:00:00 2009 GMT+0800。"
+			},
+			{
+				"funName": "XOR",
+				"description": "XOR()返回所有参数的逻辑异或。",
+				"demo": "XOR(3>0,2<9)返回false。XOR(3>12,4>6)返回false。"
+			},
+			{
+				"funName": "YEAR",
+				"description": "YEAR(serial_number)返回对应于某个日期的年份。",
+				"demo": "YEAR(\"2018/12/30\")返回2018。"
+			},
+			{
+				"funName": "YEARFRAC",
+				"description": "YEARFRAC(start_date, end_date, basis)可计算两个日期（start_date 和 end_date）之间的天数（取整天数）占一年的比例。basis:0或省略US(NASD)30/360;1实际/实际;2实际/360;3实际/365;4欧洲 30/360。",
+				"demo": "YEARFRAC(\"1 / 1 / 2012\",\"7 / 30 / 2012\",3)返回0.5780821917808219。"
+			}
+		]
+	}
+]

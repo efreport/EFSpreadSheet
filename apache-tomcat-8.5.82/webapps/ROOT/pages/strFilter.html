@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store">
+    <meta http-equiv="expires" content="0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../css/layui.css">
+    <style>
+        #un a {
+            display: block;
+            color: #333;
+            transition: all .3s;
+            margin: 5px 5px;
+            border-bottom: 1px solid #D5D5D5
+        }
+
+        #un a:hover {
+            background: #CCCCCC
+        }
+
+        .layui-elem-field legend {
+            margin-left: 20px;
+            padding: 0 0;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .cka {
+            background: #CCCCCC
+        }
+
+        img:hover {
+            background-color: #D5D5D5;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        table td {
+            height: 28px;
+            vertical-align: middle;
+        }
+
+        td input {
+            padding: 0;
+            height: 23px;
+            border: 1px solid #ccc;
+        }
+
+        td select {
+            height: 25px;
+            border: 1px solid #ccc;
+        }
+
+        input, select {
+
+        }
+
+        td select:hover {
+            box-shadow: 0px 0px 1px #44B4FF;
+        }
+
+        td input:hover {
+            box-shadow: 0px 0px 1px #44B4FF;
+        }
+
+        div select {
+            height: 25px;
+            border: 1px solid #ccc;
+            margin-bottom: 2px;
+            min-width: 100px;
+        }
+
+        div select:hover {
+            box-shadow: 0px 0px 1px #44B4FF;
+        }
+
+        div input:hover {
+            box-shadow: 0px 0px 1px #44B4FF;
+        }
+
+        #ruleCon div {
+            cursor: pointer;
+            height: 20px;
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #ruleCon input {
+            margin-right: 10px;
+            height: 16px;
+            width: 16px;
+        }
+
+        .current {
+            background-color: #0094FF;
+            color: #FFFFFF;
+            height: 20px;
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .current input {
+            margin-right: 10px;
+            height: 16px;
+            width: 16px;
+        }
+
+        #container select {
+            background-color: #F2F3F5;
+            height: 30px;
+        }
+
+        #container input {
+            background-color: #F2F3F5;
+            border: 1px solid #F2F3F5;
+        }
+
+        #container1 select {
+            background-color: #F2F3F5;
+            height: 30px;
+        }
+
+        #container1 input {
+            background-color: #F2F3F5;
+            border: 1px solid #F2F3F5;
+        }
+
+        #formulaCon input {
+            background-color: #F2F3F5;
+            border: 1px solid #F2F3F5;
+        }
+
+        #ruleCon {
+            background-color: #F2F3F5;
+            border: 1px solid #F2F3F5;
+        }
+
+        button {
+            background-color: #0094FF;
+            color: #FFFFFF;
+            border: 0px;
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body style="padding: 5px">
+<div class="layui-field-box" style="padding-left:5px;padding-bottom:10px;padding-top:0px;display:flex;">
+    显示行:
+</div>
+<div class="layui-field-box" style="padding-bottom:10px;padding-top:0px;display:flex;">
+    <div style="width:20%;" id="column"></div>
+    <div style="width:74%;color:#F2F3F5;overflow: hidden;">
+        ———————————————————————————————
+    </div>
+</div>
+<div class="layui-field-box" style="padding-top:0px;line-height: 28px;" id="container">
+    <select id="opt" style="width:146px;margin:0px;">
+        <option value="6" selected>开头是</option>
+        <option value="7">开头不是</option>
+        <option value="8">结尾是</option>
+        <option value="9">结尾不是</option>
+        <option value="10">包含</option>
+        <option value="11">不包含</option>
+    </select>
+    <input type="text" id="val" style="height:28px;width:292px;border:0px;" autocomplete="off">
+</div>
+<div class="layui-field-box" style="padding-bottom:0px;padding-top:0px;display:flex;">
+    <div style="display: flex;width:75%;justify-content: flex-start;align-items: center;">
+        <input style="margin-right:15px;" type="radio" value="1" name="isAnd" checked>与(AND)
+        <div style="display: inline-block;margin-right: 32px;"></div>
+        <input style="margin-right:15px;" type="radio" value="0" name="isAnd">或(OR)
+    </div>
+    <div style="display: flex;width:25%;justify-content:flex-end;align-items:center;">
+
+    </div>
+</div>
+<div class="layui-field-box" style="padding-top:10px;line-height: 28px;" id="container1">
+    <select id="opt1" style="width:146px;margin:0px;">
+        <option value="0" selected></option>
+        <option value="6">开头是</option>
+        <option value="7">开头不是</option>
+        <option value="8">结尾是</option>
+        <option value="9">结尾不是</option>
+        <option value="10">包含</option>
+        <option value="11">不包含</option>
+    </select>
+    <input type="text" id="val1" style="height:28px;width:292px;border:0px;" autocomplete="off">
+</div>
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    let info;
+    layui.use('layer', function () {
+        var layer = layui.layer;
+    });
+
+    //初始化数据集列名和筛选规则
+    function init(inf) {
+        info = inf;
+        $('#column').html(info.TitleStr);
+        let lastFilterExprText = info.LastFilterTextByExpr; //上次表达式过滤的条件
+        let filterRegion = info.Region; //本次过滤的区域
+        if(lastFilterExprText != ""){ //存在上次过滤的条件
+            let lastFilterJson = JSON.parse(lastFilterExprText);
+            let region = lastFilterJson.Region;
+            //同一次过滤
+            if(filterRegion.BX == region.BX && filterRegion.BY == region.BY && filterRegion.EX == region.EX && filterRegion.EY == region.EY){
+                let expr = lastFilterJson.ExprStr; //过滤表达式
+                let exprJson = expr;
+                let op1 = exprJson.Op1;
+                let v1 = exprJson.V1;
+                let op2 = exprJson.Op2;
+                let op3 = exprJson.Op3;
+                let v2 = exprJson.V2;
+                if(op1 == "ISHEADSTRING"){
+                    $('#opt').val('6').prop('selected' , true);
+                }else if(op1 == "!ISHEADSTRING"){
+                    $('#opt').val('7').prop('selected' , true);
+                }else if(op1 == "ISLASTSTRING"){
+                    $('#opt').val('8').prop('selected' , true);
+                }else if(op1 == "!ISLASTSTRING"){
+                    $('#opt').val('9').prop('selected' , true);
+                }else if(op1 == "CONTAINS"){
+                    $('#opt').val('10').prop('selected' , true);
+                }else if(op1 == "!CONTAINS"){
+                    $('#opt').val('11').prop('selected' , true);
+                }else{
+                    $('#opt').val('10').prop('selected' , true);
+                }
+
+                $('#val').val(v1);
+                if(op2 == "&&"){
+                    $('input[name="isAnd"][value="1"]').attr('checked' , true);
+                }else if(op2 == "||"){
+                    $('input[name="isAnd"][value="0"]').attr('checked' , true);
+                }else{
+                    $('input[name="isAnd"][value="1"]').attr('checked' , true);
+                }
+
+                if(op3 == "ISHEADSTRING"){
+                    $('#opt1').val('6').prop('selected' , true);
+                }else if(op3 == "!ISHEADSTRING"){
+                    $('#opt1').val('7').prop('selected' , true);
+                }else if(op3 == "ISLASTSTRING"){
+                    $('#opt1').val('8').prop('selected' , true);
+                }else if(op3 == "!ISLASTSTRING"){
+                    $('#opt1').val('9').prop('selected' , true);
+                }else if(op3 == "CONTAINS"){
+                    $('#opt1').val('10').prop('selected' , true);
+                }else if(op3 == "!CONTAINS"){
+                    $('#opt1').val('11').prop('selected' , true);
+                }else{
+                    $('#opt1').val('10').prop('selected' , true);
+                }
+                $('#val1').val(v2);
+            }
+        }
+    }
+
+    function getRules(){
+        let rules = {};
+        rules.SheetName = info.SheetName;
+        rules.TitleCell = info.TitleCell;
+        rules.TitleStr = info.TitleStr;
+        rules.Region = info.Region;
+        rules.DataType = info.DataType;
+
+        let filterInfo = {};
+        let opt = $('#opt').val();
+        let value = $('#val').val();
+        let operator = $('input[name="isAnd"]').filter(':checked').prop('value');
+        let opt1 = $('#opt1').val();
+        let value1 = $('#val1').val();
+
+        if(opt == '6'){
+            opt = "ISHEADSTRING";
+        }else if(opt == '7'){
+            opt = "!ISHEADSTRING";
+        }else if(opt == '8'){
+            opt = "ISLASTSTRING";
+        }else if(opt == '9'){
+            opt = "!ISLASTSTRING";
+        }else if(opt == '10'){
+            opt = "CONTAINS";
+        }else{
+            opt = "!CONTAINS";
+        }
+
+        if(opt1 == '0'){
+            opt1 = '';
+            value1 = '';
+        }else{
+            if(opt1 == '6'){
+                opt1 = "ISHEADSTRING";
+            }else if(opt1 == '7'){
+                opt1 = "!ISHEADSTRING";
+            }else if(opt1 == '8'){
+                opt1 = "ISLASTSTRING";
+            }else if(opt1 == '9'){
+                opt1 = "!ISLASTSTRING";
+            }else if(opt1 == '10'){
+                opt1 = "CONTAINS";
+            }else{
+                opt1 = "!CONTAINS";
+            }
+        }
+
+        if(operator == '1'){
+            operator = '&&';
+        }else{
+            operator = '||';
+        }
+
+        /*{"Op1":">", "V1":"abc", "Op2":"&&", "Op3":"<", "V2":"bcd"}}*/
+        filterInfo.Op1 = opt;
+        filterInfo.V1 = value;
+        filterInfo.Op2 = operator;
+        filterInfo.Op3 = opt1;
+        filterInfo.V2 = value1;
+
+        rules.ExprStr = filterInfo;
+
+        return rules;
+
+    }
+
+</script>
+</html>

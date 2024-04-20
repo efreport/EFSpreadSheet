@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+
+    <title>盈帆表格设计器</title>
+    <link rel="stylesheet" href="css/spreadSheet.css">
+    <link rel="stylesheet" href="css/spectrum.css">
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            height: 100%
+        }
+
+        #tools {
+            width: 100%;
+            height: 10%;
+        }
+
+        #container {
+            width: 100%;
+            height: 88%;
+            position: relative;
+        }
+
+        #screen {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #container1 {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #screen1 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="sheet">
+    <div class="item" title="导入" id="importTempl">
+        <div class="item-top">
+            <img src="image/import.png" name="new">
+        </div>
+        <div class="item-bottom">
+            导入
+        </div>
+    </div>
+    <div class="item" title="导出" onclick="showType()" style="position: relative;" id="export">
+        <div class="item-top">
+            <img src="image/export.png" name="new">
+        </div>
+        <div class="item-bottom">
+            导出
+        </div>
+        <div id="typeDiv">
+            <div class="type" onclick="exportFile(1)">Pdf</div>
+            <div class="type" onclick="exportFile(2)">Excel</div>
+            <div class="type" onclick="exportFile(3)">Word</div>
+        </div>
+    </div>
+    <div class="item" title="保存" onclick="saveC()">
+        <div class="item-top">
+            <img src="image/save.png" name="save">
+        </div>
+        <div class="item-bottom">
+            保存
+        </div>
+    </div>
+    <div class="item" title="格式刷" onclick="formatC()">
+        <div class="item-top">
+            <img src="image/format.png" name="format">
+        </div>
+        <div class="item-bottom">
+            格式刷
+        </div>
+    </div>
+    <div class="item" title="cut" onclick="cutS()">
+        <div class="item-top">
+            <img src="image/cut.png" name="cut">
+        </div>
+        <div class="item-bottom">
+            剪切
+        </div>
+    </div>
+    <div class="item" title="copy" onclick="copyS()">
+        <div class="item-top">
+            <img src="image/copy.png" name="copy">
+        </div>
+        <div class="item-bottom">
+            复制
+        </div>
+    </div>
+    <div class="item" title="paste" onclick="pasteS()">
+        <div class="item-top">
+            <img src="image/paste.png" name="paste">
+        </div>
+        <div class="item-bottom">
+            粘贴
+        </div>
+    </div>
+    <div class="item" title="撤销" onclick="undoC()">
+        <div class="item-top">
+            <img src="image/undo.png" name="undo">
+        </div>
+        <div class="item-bottom">
+            撤销
+        </div>
+    </div>
+    <div class="item" title="恢复" onclick="comebackC()">
+        <div class="item-top">
+            <img src="image/recover.png" name="recover">
+        </div>
+        <div class="item-bottom">
+            恢复
+        </div>
+    </div>
+    <div class="divideLine">
+        <div></div>
+    </div>
+    <div class="item-special">
+        <div class="item-top">
+            <select name="fontfamily" id="fontFamily" class="fontFamily" title="字体"
+                    onchange="changeFontFamily(this)"></select>
+            <select name="fontsize" class="fontSize" title="字号" onchange="changeFontSize(this)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12" selected="">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+            </select>
+        </div>
+        <div class="item-bottom">
+            <div class="item-bottom-item">
+                <img src="image/fontColor1.png" name="ftcolor" title="字体颜色"
+                     style="border-bottom:4px solid #000000;">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/backColor1.png" name="bgcolor" title="背景颜色"
+                     style="border-bottom:4px solid #FFFFFF;">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/bold.png" name="bold" title="加粗" onclick="boldC()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/underline.png" name="underline" title="下划线" onclick="underLineC()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/italic.png" name="italic" title="斜体" onclick="italicC()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/line.png" name="border" id="border" title="边框">
+            </div>
+            <div id="borderDiv" style="width:108px;">
+                <div>
+                    <div id="linecolor" style="height:20px;width: 97%;background-color: #F2F3F5;border:1px solid #D5D5D5;display:flex;color:#4E5969;margin-bottom:5px;">
+                        <div style="width:30%;height:20px;display:flex;align-items: center;justify-content: flex-end;">
+                            <div id="lineColorDiv" style="width: 16px; height: 16px; background-color: rgb(0, 0, 0);">
+
+                            </div>
+                        </div>
+                        <div id="lineColorText" style="width:50%;padding:5px;display:flex;align-items: center;">#000000</div>
+                    </div>
+                </div>
+                <div>
+                    <div style="cursor: pointer;width: 97%;margin-bottom:5px;" id="ckline">
+                        <div style="height:20px;width: 100%;text-align:center;background: white;border:1px solid #D5D5D5;">
+                            <img src="image/line/l1.png" style="width: 90%;height:20px;margin:0;padding:0;" val="1">
+                        </div>
+                    </div>
+                </div>
+                <img src="image/border_1.png" style="width: 20px;height: 20px;" name="borders" attr="00">
+                <img src="image/border_2.png" style="width: 20px;height: 20px;" name="borders" attr="6" class="">
+                <img src="image/border_3.png" style="width: 20px;height: 20px;" name="borders" attr="3">
+                <img src="image/border_4.png" style="width: 20px;height: 20px;" name="borders" attr="0"><br>
+                <img src="image/border_5.png" style="width: 20px;height: 20px;" name="borders" attr="5">
+                <img src="image/border_6.png" style="width: 20px;height: 20px;" name="borders" attr="1">
+                <img src="image/border_7.png" style="width: 20px;height: 20px;" name="borders" attr="2">
+                <img src="image/border_8.png" style="width: 20px;height: 20px;" name="borders" attr="7">
+            </div>
+        </div>
+    </div>
+    <div class="divideLine">
+        <div></div>
+    </div>
+    <div class="item" title="合并" onclick="mergeCell()">
+        <div class="item-top">
+            <img src="image/merge.png" name="merge">
+        </div>
+        <div class="item-bottom">
+            合并
+        </div>
+    </div>
+    <div class="item" title="拆分" onclick="splitCell()">
+        <div class="item-top">
+            <img src="image/split.png" name="split">
+        </div>
+        <div class="item-bottom">
+            拆分
+        </div>
+    </div>
+    <div class="divideLine">
+        <div></div>
+    </div>
+    <div class="item-special" style="width:5%;">
+        <div class="item-top">
+            <select id="dstype" class="fontFamily" title="数据类型"
+                    onchange="changeDsType(this)">
+                <option value=""></option>
+                <option value="1">布尔</option>
+                <option value="2">整型</option>
+                <option value="6">浮点</option>
+                <option value="10">字符串</option>
+                <option value="14">日期</option>
+                <option value="16">日期时间</option>
+            </select>
+        </div>
+        <div class="item-bottom format-div" onclick="dataFormat()">
+            <div class="item-bottom-item">
+                <img src="image/submit.png" title="数据格式">
+            </div>
+            数据格式
+        </div>
+    </div>
+    <div class="divideLine">
+        <div></div>
+    </div>
+    <div class="item-special-1">
+        <div style="height:10%;"></div>
+        <div class="item-top">
+            <div class="item-top-item">
+                <img src="image/left.png" name="left" title="左对齐" onclick="alignLeft()" class="choose">
+            </div>
+            <div class="item-top-item">
+                <img src="image/center.png" name="center" title="居中" onclick="alignCenter()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/right.png" name="right" title="右对齐" onclick="alignRight()">
+            </div>
+          <!--  <div class="item-top-item">
+                <img src="image/adapt.png" name="adapt" title="自适应行高" onclick="adaptC()">
+            </div>-->
+        </div>
+        <div class="item-top">
+            <div class="item-top-item">
+                <img src="image/top.png" name="top" title="顶端对齐" onclick="alignTop()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/middle.png" name="middle" title="垂直居中" onclick="alignMiddle()" class="choose">
+            </div>
+            <div class="item-top-item">
+                <img src="image/bottom.png" name="bottom" title="底端对齐" onclick="alignBottom()">
+            </div>
+           <!-- <div class="item-top-item">
+                <img src="image/adaptColumn.png" name="adaptColumn" title="自适应列宽" onclick="adaptColumnC()">
+            </div>-->
+        </div>
+    </div>
+    <div class="divideLine">
+        <div></div>
+    </div>
+    <div class="item-special-2">
+        <div style="height:10%;"></div>
+        <div class="item-top">
+            <div class="item-top-item">
+                <img src="image/addCol.png" name="addCol" title="插入列" onclick="insertColumn()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/appendCol.png" name="appendCol" title="追加列" onclick="appendColumn()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/delCol.png" name="delCol" title="删除列" onclick="deleteColumn()">
+            </div>
+        </div>
+        <div class="item-bottom">
+            <div class="item-bottom-item">
+                <img src="image/addRow.png" name="addRow" title="插入行" onclick="insertRow()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/appendRow.png" name="delRow" title="追加行" onclick="appendRow()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/delRow.png" name="delRow" title="删除行" onclick="deleteRow()">
+            </div>
+        </div>
+    </div>
+    <div style="" class="divideLine">
+        <div></div>
+    </div>
+    <div class="item-special-3">
+        <div style="height:10%;"></div>
+        <div class="item-top">
+            <div class="item-top-item">
+                <img src="image/formula.png" name="addCol" title="插入公式" onclick="insertFormula()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/oblique.png" name="appendCol" title="插入斜线" onclick="addOblC()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/frozen.png" name="delCol" title="固定行列" onclick="fixCell()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/setTable.png" name="setTable" title="设置表格" onclick="setTableRegion()">
+            </div>
+            <div class="item-top-item">
+                <img src="image/cancelTable.png" name="cancelTable" title="取消表格" onclick="removeTableRegion()">
+            </div>
+        </div>
+        <div class="item-bottom">
+            <div class="item-bottom-item">
+                <img src="image/editComment.png" name="addRow" title="编辑注释" onclick="editComment()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/delComment.png" name="delRow" title="删除注释" onclick="delComment()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/autoHidden.png" name="delRow" title="显示/隐藏注释" onclick="autoHidden()">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/image.png" name="appendCol" title="插入图片" id="addImg">
+            </div>
+            <div class="item-bottom-item">
+                <img src="image/setting.png" name="imageSetting" title="图片设置" onclick="imageSettingC()">
+            </div>
+        </div>
+    </div>
+    <div style="" class="divideLine">
+        <div></div>
+    </div>
+    <div class="item paramItem" title="显示公式/值" onclick="switchC()" style="width:3%;">
+        <div class="item-top">
+            <img src="image/hide.png" name="format" />
+        </div>
+        <div class="item-bottom">
+            公式/值
+        </div>
+    </div>
+    <div class="item paramItem" title="显示阴影" onclick="switchR()" style="width:3%;">
+        <div class="item-top">
+            <img src="image/hide.png" name="format" />
+        </div>
+        <div class="item-bottom">
+            显示阴影
+        </div>
+    </div>
+    <div style="" class="divideLine">
+        <div></div>
+    </div>
+    <div class="item paramItem" title="关于" onclick="aboutAs()" style="width:3%;">
+        <div class="item-top">
+            <img src="image/about.png" name="format" />
+        </div>
+        <div class="item-bottom">
+            关于我们
+        </div>
+    </div>
+</div>
+<div class="editArea"
+     style="width: 100%;height: 5%;background: #F7F7F7;display: flex;align-items: center;justify-content: center;">
+    <div style="width:6%;height:99%;display: inline-block;">
+        <input type="text" style="padding:0;margin:0;width:100%;height:80%;display: inline-block;text-align: center;"
+               id="cellPos" value="A1" autocomplete="off"></div>
+    <div style="display: inline-block;width:1%;"></div>
+    <div style="width:92%;height: 99%;display: inline-block;">
+        <input type="text" style="padding:0;margin:0;width:99%;height:80%;" id="editArea" autocomplete="off">
+    </div>
+</div>
+<div id="container">
+    <div id="screen"></div>
+</div>
+<!--<div id="container1">
+    <div id="screen1"></div>
+</div>-->
+
+<div id="imageSetting">
+    <div class="align">
+        <img name="imghAlign" val="1" src="image/left.png" class="horiImg choose">
+        <img name="imghAlign" val="4" src="image/center.png" class="horiImg">
+        <img name="imghAlign" val="2" src="image/right.png" class="horiImg">
+    </div>
+    <div class="vAlign">
+        <img name="imgvAlign" val="16" src="image/top.png" class="horiImg choose">
+        <img name="imgvAlign" val="64" src="image/middle.png" class="horiImg">
+        <img name="imgvAlign" val="32" src="image/bottom.png" class="horiImg">
+    </div>
+    <div class="imageSet">
+        <div style="width: 20%;display: flex;align-items: center;justify-content: center;">
+            <input type="checkbox" id="imgsf" autocomplete="off">
+        </div>
+        <div style="width: 80%;display: flex;align-items: center;justify-content: flex-start;">
+            图片缩放
+        </div>
+    </div>
+    <div class="imageSet">
+        <div style="width: 20%;display: flex;align-items: center;justify-content: center;">
+            <input type="checkbox" id="imgkeep" disabled="disabled">
+        </div>
+        <div style="width: 80%;display: flex;align-items: center;justify-content: flex-start;">
+            保持原比例
+        </div>
+    </div>
+</div>
+<div class="format-container">
+    <div id="label">
+        <div class="label-left">分类</div>
+        <div class="label-right">格式</div>
+    </div>
+    <div id="cellFormat"  class="cellFormat">
+        <div class="left"></div>
+        <div class="cellType">
+            <div class="cellType-con choose1" id="normal-t">常规</div>
+            <div class="cellType-con" id="number-t">数值</div>
+            <div class="cellType-con date-t" id="date-t">日期</div>
+            <div class="cellType-con time-t" id="time-t">时间</div>
+            <div class="cellType-con money-t" id="money-t">货币</div>
+            <div class="cellType-con percent-t" id="percent-t">百分比</div>
+            <div class="cellType-con code-t" id="code-t">条形码</div>
+        </div>
+        <div class="center"></div>
+        <div class="formatType">
+            <div class="normal">
+
+            </div>
+            <div class="number">
+                <div class="number-data" dataType="0">
+                    <div class="data-name">#0</div>
+                </div>
+                <div class="number-data" dataType="1">
+                    <div class="data-name">#0.0#</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">#0.00</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">#,##0</div>
+                </div>
+                <div class="number-data" dataType="8">
+                    <div class="data-name">#,##0.0#</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">#,##0.00</div>
+                </div>
+                <div class="number-data" dataType="9">
+                    <div class="data-name">#0.0##</div>
+                </div>
+                <div class="number-data" dataType="10">
+                    <div class="data-name">#0.00#</div>
+                </div>
+                <div class="number-data" dataType="5">
+                    <div class="data-name">#0.000</div>
+                </div>
+                <div class="number-data" dataType="6">
+                    <div class="data-name">#,##0.000</div>
+                </div>
+                <div class="number-data" dataType="7">
+                    <div class="data-name">#,##0.0##</div>
+                </div>
+                <div class="number-data" dataType="11">
+                    <div class="data-name">#,##0.00#</div>
+                </div>
+            </div>
+            <div class="date">
+                <div class="number-data" dataType="0">
+                    <div class="data-name">yyyy-MM-dd</div>
+                </div>
+                <div class="number-data" dataType="1">
+                    <div class="data-name">yyyy/MM/dd</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">yyyy-M-d</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">yyyy/M/d</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">yyyy-MM</div>
+                </div>
+                <div class="number-data" dataType="5">
+                    <div class="data-name">yyyy/MM</div>
+                </div>
+                <div class="number-data" dataType="6">
+                    <div class="data-name">MM/dd/yyyy</div>
+                </div>
+                <div class="number-data" dataType="7">
+                    <div class="data-name">dddd, MMMM dd, yyyy</div>
+                </div>
+                <div class="number-data" dataType="8">
+                    <div class="data-name">MMMM d, yyyy</div>
+                </div>
+                <div class="number-data" dataType="9">
+                    <div class="data-name">MM/d/yy</div>
+                </div>
+                <div class="number-data" dataType="10">
+                    <div class="data-name">MM.dd.yyyy</div>
+                </div>
+            </div>
+            <div class="time">
+                <div class="number-data" dataType="0">
+                    <div class="data-name">yyyy-MM-dd HH:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="1">
+                    <div class="data-name">yyyy/MM/dd hh:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">yyyy-M-d h:mm</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">yyyy-M-d H:mm</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">HH:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="5">
+                    <div class="data-name">hh:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="6">
+                    <div class="data-name">MM/dd/yyyy hh:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="7">
+                    <div class="data-name">MM/dd/yyyy HH:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="8">
+                    <div class="data-name">h:mm</div>
+                </div>
+                <div class="number-data" dataType="9">
+                    <div class="data-name">H:mm</div>
+                </div>
+                <div class="number-data" dataType="10">
+                    <div class="data-name">h:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="11">
+                    <div class="data-name">H:mm:ss</div>
+                </div>
+                <div class="number-data" dataType="12">
+                    <div class="data-name">hh:mm</div>
+                </div>
+                <div class="number-data" dataType="13">
+                    <div class="data-name">HH:mm</div>
+                </div>
+            </div>
+
+            <div class="money">
+                <div class="number-data" dataType="0">
+                    <div class="data-name">¤#0</div>
+                </div>
+                <div class="number-data" dataType="1">
+                    <div class="data-name">¤#0.00</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">¤#,##0</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">¤#,##0.0</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">¤#,##0.00</div>
+                </div>
+                <div class="number-data" dataType="5">
+                    <div class="data-name">¤#,##0;¤-#,##0</div>
+                </div>
+                <div class="number-data" dataType="6">
+                    <div class="data-name">¤#,##0.00;¤-#,##0.00</div>
+                </div>
+                <div class="number-data" dataType="7">
+                    <div class="data-name">¤#,##0.00;(¤#,##0.00)</div>
+                </div>
+                <div class="number-data" dataType="8">
+                    <div class="data-name">$#,##0;($#,##0)</div>
+                </div>
+                <div class="number-data" dataType="9">
+                    <div class="data-name">$#,##0.00;($#,##0.00)</div>
+                </div>
+                <div class="number-data" dataType="10">
+                    <div class="data-name">大写(壹贰叁...)</div>
+                </div>
+                <div class="number-data" dataType="11">
+                    <div class="data-name">大写人民币(壹贰叁...)</div>
+                </div>
+            </div>
+            <div class="percent">
+                <div class="number-data" dataType="0">
+                    <div class="data-name">#0%</div>
+                </div>
+                <div class="number-data" dataType="1">
+                    <div class="data-name">#0.0%</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">#0.00%</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">#0.000%</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">#0.0000%</div>
+                </div>
+            </div>
+            <div class="code">
+                <div class="number-data" dataType="1">
+                    <div class="data-name">UPC-A</div>
+                </div>
+                <div class="number-data" dataType="2">
+                    <div class="data-name">UPC-E</div>
+                </div>
+                <div class="number-data" dataType="3">
+                    <div class="data-name">CODE39</div>
+                </div>
+                <div class="number-data" dataType="4">
+                    <div class="data-name">CODE39+</div>
+                </div>
+                <div class="number-data" dataType="5">
+                    <div class="data-name">CODE93</div>
+                </div>
+                <div class="number-data" dataType="6">
+                    <div class="data-name">CODE128</div>
+                </div>
+                <div class="number-data" dataType="7">
+                    <div class="data-name">CODE128B</div>
+                </div>
+                <div class="number-data" dataType="8">
+                    <div class="data-name">INDUSTRIAL</div>
+                </div>
+                <div class="number-data" dataType="9">
+                    <div class="data-name">EAN</div>
+                </div>
+                <div class="number-data" dataType="10">
+                    <div class="data-name">EAN-13</div>
+                </div>
+                <div class="number-data" dataType="11">
+                    <div class="data-name">CODABAR</div>
+                </div>
+                <div class="number-data" dataType="12">
+                    <div class="data-name">PDF417</div>
+                </div>
+                <div class="number-data" dataType="13">
+                    <div class="data-name">DATAMATRIX</div>
+                </div>
+                <div class="number-data" dataType="14">
+                    <div class="data-name">QRCODE</div>
+                </div>
+                <div class="number-data" dataType="15">
+                    <div class="data-name">CODE49</div>
+                </div>
+                <div class="number-data" dataType="16">
+                    <div class="data-name">CODE16K</div>
+                </div>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+    <div id="buttons">
+        <button class="format-button" onclick="confirm()">确定</button>
+        <button class="format-button" onclick="cancel()">取消</button>
+    </div>
+</div>
+<div class="popup">
+    <header>
+        <img src="image/logo-1.png" alt="">
+        <div class="close" onclick="closeAbout()"><i class="uil uil-times"></i></div>
+    </header>
+    <div class="content-div">
+        <p>联系方式：</p>
+       <!-- <ul class="icons" title="客服QQ">
+            <a href="#"><i class="fab fa-qq"></i></a>
+            <span class="span-div">184947349</span>
+        </ul>
+        <ul class="icons" title="企业微信">
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <span class=" span-div">wxid_0n8c2v4jgnja12</span>
+        </ul>-->
+        <ul class="icons" title="联系手机">
+            <a href="#"><i class="fas fa-mobile-alt"></i></a>
+            <span class=" span-div">19945086027</span>
+        </ul>
+        <ul class="icons" title="联系座机">
+            <a href="#"><i class="fas fa-phone-volume"></i></a>
+            <span class="span-div">0710-3232128</span>
+        </ul>
+        <ul class="icons" title="邮箱地址">
+            <a href="#"><i class="fas fa-at"></i></a>
+            <span class="span-div">hehuatao@efreport.com</span>
+        </ul>
+        <p>网站首页：</p>
+        <div class="field">
+            <i class="url-icon uil uil-link"></i>
+            <a style="width:250px;cursor: pointer;" onclick="websiteC()">http://www.efreport.com</a>
+        </div>
+    </div>
+</div>
+
+<ul id="sheetMenu" class="sheetMenu" style="display: none;position:absolute;">
+    <li><a href="#"><img src="image/new.png" attr="addSh"><span>添加sheet页</span></a>
+    </li>
+    <li><a href="#"><img src="image/copySheet.png"
+                         attr="copySheet"><span>复制当前sheet页</span></a>
+    </li>
+    <li><a href="#"><img src="image/setting.png" attr="setNameSh"><span>设置sheet页名称</span></a>
+    </li>
+    <li><a href="#"><img src="image/deleteDs.png"
+                         attr="delSh"><span>移除当前sheet页</span></a></li>
+</ul>
+
+<div id="lines" tabindex="1"
+     style="display: none;text-align:center;background: #FFFFFF;position: absolute;width:104px;top:0;left: 0;border:solid #D5D5D5 1px">
+    <div class="line-style" name="lineval" val="1" style="margin:5px 0"><img
+            src="image/line/l1.png"></div>
+    <div class="line-style" name="lineval" val="2" style="margin:5px 0"><img
+            src="image/line/l2.png"></div>
+    <div class="line-style" name="lineval" val="3" style="margin:5px 0"><img
+            src="image/line/l3.png"></div>
+    <div class="line-style" name="lineval" val="4" style="margin:5px 0"><img
+            src="image/line/l4.png"></div>
+    <div class="line-style" name="lineval" val="5" style="margin:5px 0 5px 0"><img
+            src="image/line/l5.png"></div>
+</div>
+
+
+<script type="text/javascript" src="js/qtloader.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/spreadSheet.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/FileSaver.js"></script>
+<script type="text/javascript" src="js/spectrumHex8.js"></script>
+<script type="text/javascript" src="js/layui.js"></script>
+
+<script type='text/javascript'>
+    initTool();
+    let example = 'http://127.0.0.1:8080/templates/example.cel';
+    //let example = '';
+    let base = "http://127.0.0.1:8080";
+    let fonts = ['http://127.0.0.1:8080/wasm/font/simsun.ttc', 'http://127.0.0.1:8080/wasm/font/simhei.ttf']
+    let javascripts = ['http://127.0.0.1:8080/wasm/javascript/01numeric.min.js',
+        'http://127.0.0.1:8080/wasm/javascript/02numeral.min.js',
+        'http://127.0.0.1:8080/wasm/javascript/03jstat.min.js',
+        'http://127.0.0.1:8080/wasm/javascript/04formula.js',
+        'http://127.0.0.1:8080/wasm/javascript/05dayjs.min.js',
+        'http://127.0.0.1:8080/wasm/javascript/06calcexpr.js'];
+    let fontNameUrl = 'http://127.0.0.1:8080/wasm/font/realfontname.txt';
+    let spread = $.fn.spreadSheet.initSheet($('#screen'), 'http://127.0.0.1:8080/wasm/WebDesigner_7.5', fonts, javascripts, {}, 'fontFamily', fontNameUrl);
+    let spreadEvent = {
+        showEvt: function () {
+            spread.setLogicalZoom(spread.getRatio());
+        },
+        /*
+         悬浮元素鼠标按下事件
+         Param:   1:int[out]鼠标坐标x
+         2:int[out]鼠标坐标y
+         3:int[out]左右键:1左键2右键*/
+        mousePressEventOfShape: function (x, y, lor) {
+
+        },
+        /*
+         悬浮元素鼠标弹起事件
+         Param:   1:int[out]鼠标坐标x
+         2:int[out]鼠标坐标y
+         3:int[out]左右键:1左键2右键*/
+        mouseRelaseEventOfShape: function (a, b, lor) {
+        },
+        //剪切板复制事件
+        clipboardCopyEvt: function (str) {
+            let newStr = spread.decodeStrAndFree(str);
+            $("#ef_copy_area").val(newStr);
+            $("#ef_copy_area").select();
+        },
+        //剪切板粘贴事件
+        //1.内部复制内部粘贴（剪切板） 2.内部复制外部粘贴（复制到剪切板，设计器方法） 3.外部复制内部粘贴（剪切板）
+        clipboardPasteEvt: function () {
+
+        },
+        focusInEvt: function () {
+        },
+        focusOutEvt: function () {
+        },
+        mousePressHyperlinkCell: function (nX, nY, nButton, x, y, pHyperlink) {
+        },
+        mouseMoveHyperlinkCell: function (nX, nY, nButton, x, y, pHyperlink) {
+        },
+        //设计器鼠标弹起事件
+        mouseReleaseEvt: function (a, b, c) {
+            if (c == 2) {//鼠标右键事件
+
+            } else { //设计器上鼠标左键事件
+
+                let sheetType = spread.currSheetType(); //获取当前sheet页类型
+                if (sheetType == 4) { //FORM
+
+                } else if (sheetType == 6) { //PARAMS
+
+                } else { //SHEET
+                    let text = spread.getSelCellText(); //get cell text
+                    spread.input.val(text); //设置文本值
+                    initCellProp();
+                }
+            }
+            //重新获取焦点，解决设计器行列Tag获取焦点的问题
+            spread.inputFocus();
+            $('#borderDiv').hide();
+            $('#typeDiv').hide();
+            $('#imageSetting').hide();
+            $('.format-container').hide();
+            $('#sheetMenu').hide();
+            $('#lines').hide();
+        },
+        tabBarMousePressEvt: function (a, b, c) {
+            if (c == 2) {
+                let y = 25 + b,
+                    x = a + $('.left').width();
+                $("#sheetMenu").css({'z-index':10001 , 'left': x, 'top': $(window).height() - $("#sheetMenu").height() - 25}).show();
+                $("#sheetMenu").mouseover();
+            }
+        },
+        //单击模板标签事件，type 1 左键 2 右键
+        tabBarClickedEvt: function (x, y, type) {
+        },
+        //模板关闭,模板索引  whj
+        removeSpreadSheetEvt: function (index) {
+        },
+        /*** 鼠标双击事件
+         *  x 鼠标横坐标 y 鼠标纵坐标 sheetIndex 当前sheet索引:0  单元格列值row 单元格行值
+         */
+        mouseDoubleClickedEvt: function (x, y, sheetIndex, column, row) { //whj
+            //单元格是否允许编辑
+            let isAllowEdit = spread.isAllowEditCurrCell();
+            if (isAllowEdit) { //允许编辑
+                let selCell = spread.getSelCellRect(); //获取当前点击的单元格
+                let pos = spread.decodeStrAndFree(spread.getSelBeginCell());//获取单元格位置信息
+                let width = selCell.width;
+                let height = selCell.height;
+                let top = selCell.top;
+                let left = selCell.left;
+                spread.showEditor(left, top, width, height);
+            }
+        },
+
+        /*
+         * 双击悬浮元素事件
+         * */
+        doubleClickedShapePlugin: function (x, y, sheetIndex, pluginName) {
+
+        },
+        /**
+         * 鼠标左键弹起事件
+         */
+        mouseClickEvt: function (x, y, sheetIndex, column, row, type) {
+        },
+        /**
+         * 鼠标左键按下事件
+         */
+        mousePressEvt: function (a, b, c) {  //canvas左键单击事件
+            if (c == 1) { //左键
+                let sheetType = spread.currSheetType(); //获取当前sheet页类型
+                let selCell = spread.getSelCellRect(); //获取当前点击的单元格
+                if (sheetType == 4) { //FORM
+                    spread.inputContainer.css({ //在canvas上显示文本编辑框DIV
+                        "display": "block",
+                        "border": "0px solid #44B4FF",
+                        /* "top": selCell.top + 25, //25是设计器tab的高度
+                         "left": selCell.left,*/
+                        "width": 0,
+                        "height": 0,
+                        "z-index": 10000
+                    });
+                    //设置文本输入框的大小
+                    spread.input.css({ //在canvas上显示文本编辑框DIV
+                        "width": 0,
+                        "height": 0,
+                        "border": 0,
+                        "z-index": 10000
+                    });
+                    spread.input.focus();
+
+                } else if (sheetType == 6) { //PARAMS
+
+
+                } else { //SHEET
+
+                    spread.inputContainer.hide();
+                    let selCell = spread.getSelCellRect(); //获取当前点击的单元格
+                    let pos = spread.decodeStrAndFree(spread.getSelBeginCell());//获取单元格位置信息
+                    spread.inputContainer.css({ //在canvas上显示文本编辑框DIV
+                        "display": "block",
+                        "border": "0px solid #44B4FF",
+                        /* "top": selCell.top + 25, //25是设计器tab的高度
+                         "left": selCell.left,*/
+                        "width": 0,
+                        "height": 0,
+                        "z-index": 10000
+                    });
+                    //设置文本输入框的大小
+                    spread.input.css({ //在canvas上显示文本编辑框DIV
+                        "width": 0,
+                        "height": 0,
+                        "border": 0,
+                        "z-index": 10000
+                    });
+                    $('#ef_copy_area').blur();
+                    //获取编辑焦点
+                    setTimeout(function () {
+                        spread.input.focus();
+                    }, 100)
+
+                }
+            }
+        },
+        // 点击行标签事件
+        clickColTagEvt: function (type) {
+        },
+        /**
+         * 鼠标状态改变
+         * type 鼠标改变类型
+         */
+        addSheetEvt: function (type) {
+        },
+        //key 键值 text 文本 modifiers 是否有辅助键（shift，ctrl等）
+        keyPressEvt: function (key, text, modifiers) {
+
+        },
+        mouseMoveEvt: function () {
+
+        },
+        //模板标签切换事件，返回 改变后的 模板索引
+        tableChangeEvt: function (index) {
+        },
+        //切换sheet事件
+        sheetChangedEvt: function () {
+        },
+        selFrameChangedEvt: function ($0, $1, $2, $3, $4, $5, $6, $7) {
+            //initCellAttr();
+        },
+        // 列标签点击
+        clickRowTagEvt: function () {
+        },
+        /**
+         *   *Description: 鼠标状态改变
+         *  1: potSelectCell, arrow箭头
+         *  2: potAdjustColumnWidth,改变列宽
+         *  3: potAdjustRowHeight,改变行高
+         *  4: potSelectColumns,选中列
+         *  5: potSelectRows,选中行
+         *  7: potMoveSelFrame,移动选中框 4
+         *  8: potAdjustSelFrame,调整选中框
+         */
+        cursorChangedEvt: function (type) {
+            // 获取宿主元素
+             let host = document.getElementById('screen');
+             // 获取shadowRoot
+             let shadow = host.shadowRoot;
+             let canvas = shadow.querySelector('.qt-window-canvas-container');
+             let dom = $(canvas).parent();
+             if (1 == type) {
+                 dom.css("cursor", "url(image/cursor/shubiao3.png) 14 8,auto");
+                 //dom.css("cursor", "pointer");
+             } else if (2 == type) {
+                 dom.css("cursor", "url(image/cursor/01.png) 16 16,auto");
+             } else if (3 == type) {
+                 dom.css("cursor", "url(image/cursor/04.png) 16 16,auto");
+             } else if (4 == type) {
+                 dom.css("cursor", "url(image/cursor/03.png) 16 16,auto");
+             } else if (5 == type) {
+                 dom.css("cursor", "url('image/cursor/05.png') 18 18,auto");
+             } else if (7 == type) {
+                 dom.css("cursor", "move");
+             } else if (8 == type) {
+                 dom.css("cursor", "url('image/cursor/02.png') 16 16,auto");
+             } else {
+                 dom.css("cursor", "default");
+             }
+        },
+        //Param:   1.int[out]滚动条类型0:水平,1:垂直 2.int[out]当前位置值 3.int[out]总值
+        scrollBarEvt: function ($0, $1, $2) {
+        },
+        leftParentChangedEvt: function ($0, $1, $2, $3) { //左父格修改事件
+
+        },
+        topParentChangedEvt: function ($0, $1, $2, $3) {//上父格修改事件
+        },
+        removeSheetEvt: function () {
+        },
+        /**
+         *
+         * nX,nY,nButton,sheetIndex,col,row);
+         * Description: 文件控件点击事件
+         * Param:   1:int[out]鼠标坐标x
+         *             2:int[out]鼠标坐标y
+         *             3:int[out]左右键:1左键2右键
+         *             4:int[out]sheet页索引
+         *             5.int[out]单元格列
+         *             6.int[out]单元格行
+         * Return:
+         * Others:
+         *
+         * */
+        fileUploadClicked: function ($0, $1, $2, $3, $4, $5) {
+
+        },
+        sheetMoved: function (from, to) {
+
+        },
+        mousePressTableRegion: function (info) {
+            let decodeInfo = spread.decodeStrAndFree(info);
+            let infoJson = JSON.parse(decodeInfo);
+            let index = layer.open({
+                type: 2,
+                area: ['500px', '500px'],
+                closeBtn: 0,
+                maxmin: false,
+                title: ['筛选', 'height:30px;line-height:30px'],
+                content: ['pages/filter.html', 'no'],
+                btn: ['确定', '关闭'],
+                resize: false,
+                btnAlign: 'c',
+                end: function () {
+
+                },
+                success: function (layero, index) {
+                    let iframeWin = window[layero.find('iframe')[0]['name']];
+                    iframeWin.init(infoJson, index);
+                    spread.cancelOperateState();
+                },
+                yes: function (index, layero) {
+                    let iframeWin = window[layero.find('iframe')[0]['name']];
+                    let filterInfo = iframeWin.getFilterInfo();
+                    filterByText(filterInfo);
+                    layer.closeAll();
+                }
+            });
+        }
+
+    };
+    spread.setEventName('spreadEvent');
+
+</script>
+
+</body>
+</html>

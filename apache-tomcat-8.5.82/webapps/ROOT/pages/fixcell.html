@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store">
+    <meta http-equiv="expires" content="0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <style>
+        .dis{
+            /*background-color: #F5F5F5;*/
+            color:#ACA899;
+            opacity: 1;
+        }
+
+       input[type="text"] {
+            height: 28px;
+            border: 1px solid #ccc;
+            width: 95%;
+            background-color: #F2F3F5;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        .content{
+            height:100%;
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<div style="text-align: center;margin: 0 auto;width:99%;height:99%">
+    <table style="width:100%;height:100%;text-align: left">
+        <tr>
+            <td><div class="content"><input type="checkbox" id="fixRowCount">固定首行数</div></td>
+            <td><input type="text" value="0" id="fixRowCount1" maxlength="2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+        </tr>
+        <tr>
+            <td><div class="content"><input type="checkbox" id="fixColumnCount">固定首列数</div></td>
+            <td><input type="text" value="0" id="fixColumnCount1" maxlength="2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    function init(json){
+        if (json != '' && json != undefined) {
+            var obj = JSON.parse(json);
+            var fixRowCount=obj.fixRowCount;
+            var fixColumnCount=obj.fixColumnCount;
+            var fixFootBeginRow=obj.fixFootBeginRow;
+            var fixFootRowCount=obj.fixFootRowCount;
+            $("#fixRowCount1").val(fixRowCount);
+            $("#fixColumnCount1").val(fixColumnCount);
+            $("#fixFootBeginRow1").val(fixFootBeginRow);
+            $("#fixFootRowCount1").val(fixFootRowCount);
+            if(fixRowCount==0){
+                fixType(1);
+            }else{
+                $("#fixRowCount").prop('checked',true);
+            }
+            if(fixColumnCount==0){
+                fixType(2);
+            }else{
+                $("#fixColumnCount").prop('checked',true);
+            }
+            if(fixFootBeginRow==0){
+                fixType(3);
+            }else{
+                $("#fixFootBeginRow").prop('checked',true);
+            }
+            if(fixFootRowCount==0){
+                fixType(4);
+            }else{
+                $("#fixFootRowCount").prop('checked',true);
+            }
+        }else{
+            fixType(1);
+            fixType(2);
+            fixType(3);
+            fixType(4);
+        }
+        boundEvent();
+    }
+    function boundEvent(){
+        $("#fixRowCount").change(function(){
+            if($(this).prop('checked')){
+                delFixType(1);
+                $("#fixRowCount1").val(1);
+            }else{
+                fixType(1);
+                $("#fixRowCount1").val(0);
+            }
+        });
+        $("#fixColumnCount").change(function(){
+            if($(this).prop('checked')){
+                delFixType(2);
+                $("#fixColumnCount1").val(1);
+            }else{
+                fixType(2);
+                $("#fixColumnCount1").val(0);
+            }
+        });
+        $("#fixFootBeginRow").change(function(){
+            if($(this).prop('checked')){
+                delFixType(3);
+                $("#fixFootBeginRow1").val(1);
+            }else{
+                fixType(3);
+                $("#fixFootBeginRow1").val(0);
+            }
+        });
+        $("#fixFootRowCount").change(function(){
+            if($(this).prop('checked')){
+                delFixType(4);
+                $("#fixFootRowCount1").val(1);
+            }else{
+                fixType(4);
+                $("#fixFootRowCount1").val(0);
+            }
+        });
+    }
+    function delFixType(type){
+        if(type==1){
+            $("#fixRowCount1").removeAttr('readonly');
+            $("#fixRowCount1").removeClass('dis');
+        }else if(type==2){
+            $("#fixColumnCount1").removeAttr('readonly',true);
+            $("#fixColumnCount1").removeClass('dis');
+        }else if(type==3){
+            $("#fixFootBeginRow1").removeAttr('readonly',true);
+            $("#fixFootBeginRow1").removeClass('dis');
+        }else if(type==4){
+            $("#fixFootRowCount1").removeAttr('readonly',true);
+            $("#fixFootRowCount1").removeClass('dis');
+        }
+    }
+    function fixType(type){
+        if(type==1){
+            $("#fixRowCount1").attr('readonly',true);
+            $("#fixRowCount1").addClass('dis');
+        }else if(type==2){
+            $("#fixColumnCount1").attr('readonly',true);
+            $("#fixColumnCount1").addClass('dis');
+        }else if(type==3){
+            $("#fixFootBeginRow1").attr('readonly',true);
+            $("#fixFootBeginRow1").addClass('dis');
+        }else if(type==4){
+            $("#fixFootRowCount1").attr('readonly',true);
+            $("#fixFootRowCount1").addClass('dis');
+        }
+    }
+    function getPage(){
+        var fixRowCount= 0,fixColumnCount=0,fixFootBeginRow= 0,fixFootRowCount=0;
+        if($("#fixRowCount").prop('checked')){
+            fixRowCount=parseInt($("#fixRowCount1").val());
+        }
+        if($("#fixColumnCount").prop('checked')){
+            fixColumnCount=parseInt($("#fixColumnCount1").val());
+        }
+        if($("#fixFootBeginRow").prop('checked')){
+            fixFootBeginRow=parseInt($("#fixFootBeginRow1").val());
+        }
+        if($("#fixFootRowCount").prop('checked')){
+            fixFootRowCount=parseInt($("#fixFootRowCount1").val());
+        }
+        var page = {
+            fixRowCount:fixRowCount
+            ,fixColumnCount:fixColumnCount
+            ,fixFootBeginRow:fixFootBeginRow
+            ,fixFootRowCount:fixFootRowCount
+        };
+        return page;
+    }
+</script>
+</html>
