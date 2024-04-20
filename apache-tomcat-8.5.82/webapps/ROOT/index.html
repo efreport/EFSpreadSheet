@@ -785,15 +785,15 @@
             <a href="#"><i class="fas fa-mobile-alt"></i></a>
             <span class=" span-div">19945086027</span>
         </ul>
-        <ul class="icons" title="联系座机">
+      <!--  <ul class="icons" title="联系座机">
             <a href="#"><i class="fas fa-phone-volume"></i></a>
             <span class="span-div">0710-3232128</span>
         </ul>
         <ul class="icons" title="邮箱地址">
             <a href="#"><i class="fas fa-at"></i></a>
             <span class="span-div">hehuatao@efreport.com</span>
-        </ul>
-        <p>网站首页：</p>
+        </ul>-->
+        <p>网址：</p>
         <div class="field">
             <i class="url-icon uil uil-link"></i>
             <a style="width:250px;cursor: pointer;" onclick="websiteC()">http://www.efreport.com</a>
@@ -827,10 +827,17 @@
             src="image/line/l5.png"></div>
 </div>
 
+<div id="maskDiv"
+     style="z-index:10002;display:none;width: 100%;height:100%;position: absolute;left: 0px;top:0px;display: flex;flex-direction:column;justify-content: center;align-items: center;background-color: #ffffff34;">
+    <img src="image/loading.gif">
+    <div style="color:red;">初次加载设计器需要下载相关资源文件，请稍等</div>
+</div>
+
+
 
 <script type="text/javascript" src="js/qtloader.js"></script>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/spreadSheet.js"></script>
+<script type="text/javascript" src="js/spreadsheet.js"></script>
 <script type="text/javascript" src="js/tool.js"></script>
 <script type="text/javascript" src="js/FileSaver.js"></script>
 <script type="text/javascript" src="js/spectrumHex8.js"></script>
@@ -838,8 +845,7 @@
 
 <script type='text/javascript'>
     initTool();
-    let example = 'http://127.0.0.1:8080/templates/example.cel';
-    //let example = '';
+	let example = 'http://127.0.0.1:8080/templates/example.cel';
     let base = "http://127.0.0.1:8080";
     let fonts = ['http://127.0.0.1:8080/wasm/font/simsun.ttc', 'http://127.0.0.1:8080/wasm/font/simhei.ttf']
     let javascripts = ['http://127.0.0.1:8080/wasm/javascript/01numeric.min.js',
@@ -850,6 +856,7 @@
         'http://127.0.0.1:8080/wasm/javascript/06calcexpr.js'];
     let fontNameUrl = 'http://127.0.0.1:8080/wasm/font/realfontname.txt';
     let spread = $.fn.spreadSheet.initSheet($('#screen'), 'http://127.0.0.1:8080/wasm/WebDesigner_7.5', fonts, javascripts, {}, 'fontFamily', fontNameUrl);
+	
     let spreadEvent = {
         showEvt: function () {
             spread.setLogicalZoom(spread.getRatio());
@@ -1081,6 +1088,7 @@
         },
         //Param:   1.int[out]滚动条类型0:水平,1:垂直 2.int[out]当前位置值 3.int[out]总值
         scrollBarEvt: function ($0, $1, $2) {
+            spread.hideEditor();
         },
         leftParentChangedEvt: function ($0, $1, $2, $3) { //左父格修改事件
 

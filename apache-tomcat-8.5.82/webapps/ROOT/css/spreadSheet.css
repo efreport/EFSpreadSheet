@@ -411,6 +411,8 @@ textarea:focus {
     height:360px;
     z-index:10001;
     position: absolute;
+    display:none;
+    top:0;
    /* left:100px;
     top:200px;*/
     background-color: rgb(245, 246, 247);

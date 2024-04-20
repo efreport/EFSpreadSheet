@@ -244,32 +244,34 @@
                         }
 
                         if (index == 0) {
-                            if(example != ''){
+                            if (example != '') {
                                 $.ajax({
                                     url: example, // 文件的URL
                                     type: 'GET', // 请求类型，通常是GET
                                     dataType: 'text', // 期望的返回数据类型，这里是文本
-                                    success: function(data) {
+                                    success: function (data) {
+                                        $('#maskDiv').hide();
                                         //obj._addSpreadSheet(spreadBaseTools.encode('',obj), spreadBaseTools.encode('',obj));
                                         //obj._restoreFromJsonStream(spreadBaseTools.encode(data , obj))
-                                        obj._addSpreadSheet(spreadBaseTools.encode('',obj), spreadBaseTools.encode(data , obj));
+                                        obj._addSpreadSheet(spreadBaseTools.encode('', obj), spreadBaseTools.encode(data, obj));
                                         obj._setTabDisplay(false);
                                         obj._setLogicalZoom(spreadBaseTools.getRatio());
                                         obj._setAddFormBtnHidden(true); //hide form button
                                         obj._setShowPageLine(false);
                                         obj._setShowColRowShadow(false);
                                         obj._setAutoPaperSize(true);
-                                      /*  setTimeout(function(){
+                                        /*  setTimeout(function(){
 
-                                        },1000)*/
+                                          },1000)*/
+
                                     },
-                                    error: function(jqXHR, textStatus, errorThrown) {
+                                    error: function (jqXHR, textStatus, errorThrown) {
                                         console.error('Error: ' + textStatus, errorThrown);
                                     }
 
                                 });
-                            }else{
-                                obj._addSpreadSheet(spreadBaseTools.encode('',obj), spreadBaseTools.encode('',obj));
+                            } else {
+                                obj._addSpreadSheet(spreadBaseTools.encode('', obj), spreadBaseTools.encode('', obj));
                                 obj._setTabDisplay(false);
                                 obj._setLogicalZoom(spreadBaseTools.getRatio());
                                 obj._setAddFormBtnHidden(true); //hide form button
@@ -296,8 +298,8 @@
                                         var res = obj._loadClacExpr(buf, len);
                                         obj._free(buf);
                                     }
-                                   /* obj._setShowExprValue(false);
-                                    obj._setShowExprValue(true);*/
+                                    /* obj._setShowExprValue(false);
+                                     obj._setShowExprValue(true);*/
                                     window.clearInterval(_variables.timer);
                                 }
                             }, 200);
@@ -638,6 +640,7 @@
         },
         // spreadSheet init
         initSheet: function (obj, wasmUrl, fontUrl, jsUrl, sheetSetting, fontFamilyId, fontNameUrl) {
+            $('#maskDiv').show();
             var spread = this;
             var spreadSheetObj;
             var inputContainer;
@@ -834,6 +837,103 @@
                         "z-index": 10000
                     }).show();
                     let text = this.getSelCellText(); //获取当前单元格文本
+                    let font = this.getSelCellFont(); //获取字体属性
+                    let fontJson = JSON.parse(font);
+                    if (fontJson.bold) {
+                        ii.css({
+                            "font-weight": "bold"
+                        })
+                    } else {
+                        ii.css({
+                            "font-weight": "normal"
+                        })
+                    }
+                    if (fontJson.italic) {
+                        ii.css({
+                            "font-style": "italic"
+                        })
+                    } else {
+                        ii.css({
+                            "font-style": "normal"
+                        })
+                    }
+                    if (fontJson.underline) {
+                        ii.css({
+                            "text-decoration": "underline"
+                        })
+                    } else {
+                        ii.css({
+                            "text-decoration": "none"
+                        })
+                    }
+                    let fontFamily = fontJson.family;
+                    ii.css({
+                        "font-family": fontFamily
+                    })
+                    let fontSize = fontJson.pointSize;
+                    if (fontSize > 16) {
+                        if(fontSize <=20){
+                            ii.css({
+                                "font-size": fontSize + 6
+                            })
+                        } else if (fontSize <= 24) {
+                            ii.css({
+                                "font-size": fontSize + 7
+                            })
+                        } else if(fontSize <= 28){
+                            ii.css({
+                                "font-size": fontSize + 8
+                            })
+                        }  else if(fontSize <= 32){
+                            ii.css({
+                                "font-size": fontSize + 9
+                            })
+                        } else{
+                            ii.css({
+                                "font-size": fontSize + 10
+                            })
+                        }
+                    } else {
+                        ii.css({
+                            "font-size": fontSize + 4
+                        })
+                    }
+
+                    let color = this.getSelCellFontColor(); //文本颜色
+                    ii.css({
+                        "color": color
+                    })
+                    let bkColor = this.getSelCellBKColor(); //背景颜色
+                    ii.css({
+                        "background-color": bkColor
+                    })
+                    let alignH = this.getSelCellAlignH(); //水平方向
+                    if (alignH == 1) {//left
+                        ii.css({
+                            "text-align": "left"
+                        })
+                    } else if (alignH == 4) {//center
+                        ii.css({
+                            "text-align": "center"
+                        })
+                    } else if (alignH == 2) {//right
+                        ii.css({
+                            "text-align": "right"
+                        })
+                    } else {
+
+                    }
+
+                    let alignV = this.getSelCellAlignV(); //水平方向
+                    if (alignV == 16) {//top
+
+                    } else if (alignV == 64) {//center
+
+                    } else if (alignV == 32) {//right
+
+                    } else {
+
+                    }
                     if (curText == undefined) {
                         ii.val(text); //设置文本值
                         //获取编辑焦点
@@ -1541,10 +1641,10 @@
                 setShowExprValue: function (flag) {
                     return this.ss._setShowExprValue(flag);
                 },
-                isShowColRowShadow: function(){
+                isShowColRowShadow: function () {
                     return this.ss._isShowColRowShadow();
                 },
-                setShowColRowShadow: function(flag){
+                setShowColRowShadow: function (flag) {
                     return this.ss._setShowColRowShadow(flag);
                 },
                 //获取模板内容
@@ -1606,7 +1706,7 @@
                     let index = this.ss._getCurrentSheet();
                     this.ss._removeSheetColumn(index);
                 },
-                restoreFromJsonStream: function(str){
+                restoreFromJsonStream: function (str) {
                     this.ss._restoreFromJsonStream(this.encode(str));
                 },
                 setFixedColRow: function (a, b, c, d) {
@@ -1619,49 +1719,49 @@
                 setSelDesignTableRegion: function () {
                     return this.ss._setSelDesignTableRegion();
                 },
-                setSelTableRegion: function(){
+                setSelTableRegion: function () {
                     return this.ss._setSelTableRegion();
                 },
                 removeSelDesignTableRegion: function () {
                     return this.ss._removeSelDesignTableRegion();
                 },
-                removeSelTableRegion: function(){
+                removeSelTableRegion: function () {
                     return this.ss._removeSelTableRegion();
                 },
-                cancelOperateState: function(){
+                cancelOperateState: function () {
                     return this.ss._cancelOperateState();
                 },
-                filterTableRegionText: function(val){
+                filterTableRegionText: function (val) {
                     this.ss._filterTableRegionText(this.encode(val))
                 },
-                orderTableRegion: function(info , order){
-                    this.ss._orderTableRegion(this.encode(info) , order);
+                orderTableRegion: function (info, order) {
+                    this.ss._orderTableRegion(this.encode(info), order);
                 },
-                filterTableRegionTextByExpr: function(info){
+                filterTableRegionTextByExpr: function (info) {
                     this.ss._filterTableRegionTextByExpr(this.encode(info));
                 },
-                restoreShowAllRowsInTableRegion: function(info){
+                restoreShowAllRowsInTableRegion: function (info) {
                     this.ss._restoreShowAllRowsInTableRegion(this.encode(info));
                 },
-                setShowPageLine: function(flag){
+                setShowPageLine: function (flag) {
                     this.ss._setShowPageLine(flag);
                 },
                 importXlsxStream: function (content) {
                     this.ss._importXlsxStream(this.encode(content), 1);
                 },
-                removeCurrentSheet: function(){
+                removeCurrentSheet: function () {
                     this.ss._removeCurrentSheet();
                 },
-                setCurrentSheetName: function(val){
+                setCurrentSheetName: function (val) {
                     this.ss._setCurrentSheetName(this.encode(val));
                 },
-                getCurrentSheetName: function(){
+                getCurrentSheetName: function () {
                     return this.decodeStrAndFree(this.ss._getCurrentSheetName());
                 },
-                appendSheet: function(){
+                appendSheet: function () {
                     this.ss._appendSheet()
                 },
-                cloneSheetByName: function(val){
+                cloneSheetByName: function (val) {
                     this.ss._cloneSheetByName(this.encode(val));
                 }
             };
