@@ -48,11 +48,7 @@
 	},
 	{
 		"typeName": "数学函数",
-		"funs": [{
-			"funName": "ATAN2",
-			"description": "ATAN2(y,x)返回从 x 轴到点 (x,y) 之间的角度。返回的值是-PI 到 PI 之间的值，是从 X 轴正向逆时针旋转到点 (x,y) 时经过的角度。请注意这个函数的参数顺序，Y 坐标在 X 坐标之前传递。",
-			"demo": "ATAN2(0.50,0.50) 返回0.7853981633974483。"
-		}, {
+		"funs": [ {
 			"funName": "EXP",
 			"description": "EXP(x)返回 e 的 x 次幂的值。e 代表自然对数的底数，其值近似为 2.71828。x是任意数值或表达式。被用作指数。",
 			"demo": "EXP(1)返回2.718281828459045。"
@@ -266,21 +262,6 @@
 				"demo": "BASE(7,2)返回111。BASE(100,16)返回64。BASE(15,2,10)返回0000001111。"
 			},
 			{
-				"funName": "BIN2DEC",
-				"description": "Bin2DEC(number)将二进制数转换为十进制数。",
-				"demo": "Bin2DEC(1100100)返回100。Bin2DEC(1111111111)返回-1。"
-			},
-			{
-				"funName": "BIN2HEX",
-				"description": "BIN2HEX(number, places)将二进制数转换为十六进制数。",
-				"demo": "BIN2HEX(11111011, 4)返回00fb。BIN2HEX(1110)返回e。"
-			},
-			{
-				"funName": "BIN2OCT",
-				"description": "BIN2OCT(number, places)将二进制数转换为十六进制数。",
-				"demo": "BIN2OCT(1001, 3)返回011。BIN2OCT(1100100)返回144。"
-			},
-			{
 				"funName": "BITAND",
 				"description": "BITAND( number1, number2)返回两个数的按位与。",
 				"demo": "BITAND(1,5)返回1。BITAND(13,25)返回9。"
@@ -386,21 +367,6 @@
 				"demo": "CSCH(1.5)返回0.46964244059522464。"
 			},
 			{
-				"funName": "DEC2BIN",
-				"description": "DEC2BIN(number, places)将十进制数转换为二进制数。",
-				"demo": "DEC2BIN(9, 4)返回1001。DEC2BIN(-100)返回1110011100。"
-			},
-			{
-				"funName": "DEC2HEX",
-				"description": "DEC2HEX(number, places)将十进制数转换为十六进制数。",
-				"demo": "DEC2HEX(100, 4)返回0064。DEC2HEX(-54)返回ffffffffca。DEC2HEX(28)返回1c。"
-			},
-			{
-				"funName": "DEC2OCT",
-				"description": "DEC2OCT(number, places)将十进制数转换为八进制数。",
-				"demo": "DEC2OCT(58, 3)返回072。DEC2OCT(-100)返回7777777634。"
-			},
-			{
 				"funName": "DELTA",
 				"description": "DELTA(number1, number2)检验两个值是否相等。如果 number1=number2，则返回 1；否则返回 0。",
 				"demo": "DELTA(5, 4)返回0。DELTA(5, 5)返回1。"
@@ -429,11 +395,6 @@
 				"funName": "DAYS",
 				"description": "DAYS(end_date, start_date)返回两个日期之间的天数。",
 				"demo": "DAYS(\"2011-03-15\",\"2011-02-01\")返回42。"
-			},
-			{
-				"funName": "DAYS360",
-				"description": "DAYS360(start_date, end_date, method)按照一年 360 天的算法（每个月以 30 天计，一年共计 12 个月），DAYS360 函数返回两个日期间相差的天数。",
-				"demo": "DAYS360(\"2011-01-01\",\"2011-12-31\")返回360。"
 			},
 			{
 				"funName": "DECIMAL",
@@ -509,21 +470,6 @@
 				"funName": "GESTEP",
 				"description": "GESTEP(number, step)如果 number ≥ step，则返回 1；否则返回 0（零）。 ",
 				"demo": "=GESTEP(5, 4)返回1。GESTEP(-1)返回0。"
-			},
-			{
-				"funName": "HEX2BIN",
-				"description": "HEX2BIN(number, places)将十六进制数转换为二进制数。",
-				"demo": "HEX2BIN(\"F\", 8)返回00001111。HEX2BIN(\"B7\")返回10110111。"
-			},
-			{
-				"funName": "HEX2DEC",
-				"description": "HEX2DEC(number, places)将十六进制数转换为十进制数。",
-				"demo": "HEX2DEC(\"A5\")返回165。HEX2DEC(\"FFFFFFFF5B\")返回-165。"
-			},
-			{
-				"funName": "HEX2OCT",
-				"description": "HEX2OCT(number, places)将十六进制数转换为八进制数。",
-				"demo": "HEX2OCT(\"F\", 3)返回017。HEX2OCT(\"3B4E\")返回35516。"
 			},
 			{
 				"funName": "HOUR",
@@ -606,11 +552,6 @@
 				"demo": "LOG(8, 2)返回3。LOG(10)返回1。"
 			},
 			{
-				"funName": "LOG10",
-				"description": "LOG10(number)返回数字以 10 为底的对数。",
-				"demo": "LOG(86)返回1.9344984512435675。LOG10(10)返回1。LOG10(100000)返回5。"
-			},
-			{
 				"funName": "LOWER",
 				"description": "LOWER(text)将一个文本字符串中的所有大写字母转换为小写字母。",
 				"demo": "LOWER(\"E. E. Cummings\")返回e. e. cummings。"
@@ -691,21 +632,6 @@
 				"funName": "NOW",
 				"description": "NOW(formatStr)按照formatStr格式返回当前日期和时间。",
 				"demo": "NOW()返回2020/08/08 08:08。NOW(\"yyyy-M-D h:m\")返回2020-8-8 8:8。"
-			},
-			{
-				"funName": "OCT2BIN",
-				"description": "OCT2BIN(number)将八进制数转换为二进制数。",
-				"demo": "OCT2BIN(3, 3)返回011。"
-			},
-			{
-				"funName": "OCT2DEC",
-				"description": "OCT2DEC(number)将八进制数转换为十进制数。",
-				"demo": "OCT2DEC(54)返回44。OCT2DEC(7777777533)返回-165。"
-			},
-			{
-				"funName": "OCT2HEX",
-				"description": "OCT2HEX(number)将八进制数转换为十六进制数。",
-				"demo": "OCT2HEX(100, 4)返回0040。"
 			},
 			{
 				"funName": "ODD",
